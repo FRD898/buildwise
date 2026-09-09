@@ -45,8 +45,9 @@ export function TallerSections({ children }: { children: ReactNode }) {
   ];
   const [mode, setMode] = useState<"lectura" | "presentacion">("lectura");
   const [current, setCurrent] = useState(0);
-  const goPrev = () => setCurrent((c) => Math.max(c - 1, 0));
-  const goNext = () => setCurrent((c) => Math.min(c + 1, slides.length - 1));
+  const boundedCurrent = Math.min(current, Math.max(slides.length - 1, 0));
+  const goPrev = () => setCurrent(Math.max(boundedCurrent - 1, 0));
+  const goNext = () => setCurrent(Math.min(boundedCurrent + 1, slides.length - 1));
 
   useEffect(() => {
     if (mode !== "presentacion") return;
@@ -79,17 +80,17 @@ export function TallerSections({ children }: { children: ReactNode }) {
         </div>
         {mode === "presentacion" && slides.length > 0 && (
           <div className="flex items-center gap-3 text-sm text-muted-foreground">
-            <Button variant="ghost" size="sm" onClick={goPrev} disabled={current === 0}>
+            <Button variant="ghost" size="sm" onClick={goPrev} disabled={boundedCurrent === 0}>
               ←
             </Button>
             <span>
-              {current + 1} / {slides.length}
+              {boundedCurrent + 1} / {slides.length}
             </span>
             <Button
               variant="ghost"
               size="sm"
               onClick={goNext}
-              disabled={current === slides.length - 1}
+              disabled={boundedCurrent === slides.length - 1}
             >
               →
             </Button>
@@ -114,7 +115,7 @@ export function TallerSections({ children }: { children: ReactNode }) {
             ))}
           </>
         ) : (
-          slides[current]
+          slides[boundedCurrent]
         )}
       </div>
     </div>
