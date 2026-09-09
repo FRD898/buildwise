@@ -3,7 +3,7 @@
 ## Qué es
 **Buildwise** es la aplicación companion de la ruta "Product Builder con IA" de Netzun: once talleres, del problema al producto en producción, con agentes de IA.
 
-No reemplaza al curso — los videos, la inscripción y el certificado se quedan en Netzun. Buildwise es donde vive el **método**: los criterios, plantillas y decisiones que se construyen en vivo cada semana, versionados en un repositorio público, y expuestos al agente de código del propio alumno.
+No reemplaza al curso — los videos, la inscripción y el certificado se quedan en Netzun. Buildwise es donde vive el **método**: los criterios, plantillas y decisiones que se construyen en vivo en cada taller, versionados en un repositorio público, y expuestos al agente de código del propio alumno.
 
 ## El problema
 Un ingeniero de software que recibe tareas ya especificadas sabe programar, pero no ha practicado el ciclo completo: decidir qué construir, definirlo antes de que un agente lo ejecute, diseñarlo, revisarlo, publicarlo y medirlo. Ese ciclo es lo que separa a alguien que ejecuta de alguien que puede asumir un producto de punta a punta — un **product builder**.
@@ -22,7 +22,7 @@ El contenido y los criterios viven como **markdown versionado en un repositorio 
 
 **Contenido del curso**
 - Los once talleres en markdown, publicados uno a uno conforme avanza la ruta
-- Un punto de control (`docs/`, `templates/`, `criterios/`) por semana, replicable desde cero
+- Un punto de control (`docs/`, `templates/`, `criterios/`) por taller, replicable desde cero
 
 **Sistema de diseño**
 - Identidad visual propia, versionada, aplicada a partir del taller 7
@@ -32,11 +32,11 @@ El contenido y los criterios viven como **markdown versionado en un repositorio 
 - Las plantillas se presentan como **referencia adaptable**, no como estándar: el objetivo es que el alumno entienda el propósito de cada documento y decida cuándo lo necesita, no que reproduzca su estructura de memoria
 - El método no se explica, **se usa**: se pone disponible dentro del flujo de trabajo real del alumno, no en una página aparte
 - Cada artefacto que se sirve tiene origen rastreable en una sesión del curso — no hay contenido inventado para llenar un catálogo
-- El repositorio es público y con puntos de control por taller: cualquiera puede replicar el estado exacto de cualquier semana, sin depender de haber visto las anteriores
+- El repositorio es público y con puntos de control por taller: cualquiera puede replicar el estado exacto de cualquier taller, sin depender de haber visto los anteriores
 
 ## Usuarios objetivo
-- **El alumno que sigue la ruta** — usa el método semana a semana para aplicarlo sobre su propio proyecto
-- **El alumno que se suma a mitad de ruta** — descarga el punto de control de esa semana y arranca sin depender de lo anterior
+- **El alumno que sigue la ruta** — usa el método taller a taller para aplicarlo sobre su propio proyecto
+- **El alumno que se suma a mitad de ruta** — descarga el punto de control de ese taller y arranca sin depender de lo anterior
 - **El que llega por la grabación, meses después** — encuentra el contenido y el repositorio en el mismo estado en que se dictó esa clase
 
 ## Qué no es
