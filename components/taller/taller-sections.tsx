@@ -100,8 +100,9 @@ export function TallerSections({ children }: { children: ReactNode }) {
 
       <div
         className={cn(
-          "space-y-4",
-          mode === "presentacion" && "flex min-h-[60vh] flex-col justify-center",
+          "mx-auto max-w-3xl space-y-4",
+          mode === "presentacion" &&
+            "flex min-h-[60vh] max-w-4xl flex-col justify-center gap-6 text-center [&_h2]:text-4xl [&_h3]:text-base [&_table]:text-left [&_ul]:text-left [&_ol]:text-left [&_p]:text-left",
         )}
       >
         {mode === "lectura" ? (
