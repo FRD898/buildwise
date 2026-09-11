@@ -11,7 +11,7 @@
 
 Cada taller necesita un punto de control versionado (`docs/`, `templates/`, `criterios/`) que sirva para dos cosas a la vez:
 
-- material de clase en vivo, tipo slide, un concepto por pantalla
+- material de clase en vivo, tipo diapositiva, un concepto por pantalla
 - documento de auto-estudio para quien llega después por la grabación, o entra a mitad de ruta ([`docs/product-brief.md`](../product-brief.md))
 
 El contenido tiene que:
@@ -19,7 +19,7 @@ El contenido tiene que:
 - soportar diagramas
 - verse bien en modo lectura normal y en modo presentación, sin mantener dos copias del mismo contenido
 
-Markdown simple no permite layouts personalizados (modo slide) ni diagramas embebidos. HTML a mano se ve mal como texto plano, mezcla etiquetas con contenido, y hace difícil comparar cambios en el historial de git.
+Markdown simple no permite layouts personalizados (modo diapositiva) ni diagramas embebidos. HTML a mano se ve mal como texto plano, mezcla etiquetas con contenido, y hace difícil comparar cambios en el historial de git.
 
 ## Decisión
 
@@ -56,13 +56,13 @@ Cada `##` dentro de `taller-N.mdx` es una diapositiva. La página lee esos bloqu
 - **modo lectura**: scroll normal, todo el documento
 - **modo presentación**: una sección a pantalla completa, se avanza con flechas
 
-Sin deck de slides aparte — el mismo archivo sirve para los dos modos.
+Sin juego de diapositivas aparte — el mismo archivo sirve para los dos modos.
 
 ## Alternativas consideradas
 
 ### A. Markdown simple
 
-**Veredicto:** Rechazada. No permite componentes propios (modo slide) ni control de layout. Mermaid sería posible con un plugin, pero el modo presentación no.
+**Veredicto:** Rechazada. No permite componentes propios (modo diapositiva) ni control de layout. Mermaid sería posible con un plugin, pero el modo presentación no.
 
 ### B. HTML a mano por taller
 
@@ -72,9 +72,9 @@ Sin deck de slides aparte — el mismo archivo sirve para los dos modos.
 
 **Veredicto:** Rechazada. Rompe "todo versionado como texto" — exporta imágenes o depende de un servicio externo. Mermaid, al ser texto en el mismo archivo, se puede comparar en git y no depende de nada afuera del repo.
 
-### D. Deck de slides real (Reveal.js u otro) separado del documento
+### D. Juego de diapositivas real (Reveal.js u otro) separado del documento
 
-**Veredicto:** Rechazada por ahora. Mantener el contenido de clase y el de auto-estudio sincronizados en dos archivos es doble trabajo. Un layout simple de "una sección por pantalla" con navegación por teclado, sobre el mismo MDX, cubre el caso sin esa complejidad. Revisar si el modo presentación llega a necesitar transiciones que este approach no pueda dar.
+**Veredicto:** Rechazada por ahora. Mantener el contenido de clase y el de auto-estudio sincronizados en dos archivos es doble trabajo. Un layout simple de "una sección por pantalla" con navegación por teclado, sobre el mismo MDX, cubre el caso sin esa complejidad. Revisar si el modo presentación llega a necesitar transiciones que esta aproximación no pueda dar.
 
 ### E. Archivos `.mdx` directo bajo `app/` (ruta de archivo directa)
 
@@ -94,7 +94,7 @@ Sin deck de slides aparte — el mismo archivo sirve para los dos modos.
 
 ### Restricciones / limitaciones
 
-- Agrega dependencia de MDX (`@next/mdx`) y de un renderer de Mermaid — justificado porque markdown simple no cubre ni slides ni diagramas.
+- Agrega dependencia de MDX (`@next/mdx`) y de un renderer de Mermaid — justificado porque markdown simple no cubre ni diapositivas ni diagramas.
 - Cada `##` cuenta como una diapositiva nueva; si un taller necesita más niveles dentro del mismo concepto, usar `###`, que no cuenta como diapositiva nueva.
 
 ### Cuándo revisar esta decisión
