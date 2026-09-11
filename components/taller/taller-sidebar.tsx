@@ -14,9 +14,14 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import { AVAILABLE_TALLERES, TALLER_COUNT } from "@/lib/talleres";
+import { AVAILABLE_CONCEPTOS } from "@/lib/conceptos";
 
 const TALLERES = Array.from({ length: TALLER_COUNT }, (_, i) => i + 1);
 const AVAILABLE = new Set(AVAILABLE_TALLERES);
+
+const CONCEPTO_LABELS: Record<string, string> = {
+  "product-brief": "Product Brief",
+};
 
 export function TallerSidebar() {
   const pathname = usePathname();
@@ -44,6 +49,24 @@ export function TallerSidebar() {
                     >
                       {!available && label}
                     </SidebarMenuButton>
+                  </SidebarMenuItem>
+                );
+              })}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+        <SidebarGroup>
+          <SidebarGroupLabel>Conceptos</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {AVAILABLE_CONCEPTOS.map((slug) => {
+                const href = `/conceptos/${slug}`;
+                return (
+                  <SidebarMenuItem key={slug}>
+                    <SidebarMenuButton
+                      isActive={pathname === href}
+                      render={<Link href={href}>{CONCEPTO_LABELS[slug] ?? slug}</Link>}
+                    />
                   </SidebarMenuItem>
                 );
               })}
