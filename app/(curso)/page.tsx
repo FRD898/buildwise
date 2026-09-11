@@ -28,7 +28,7 @@ export default function Home() {
       </div>
       <footer className="mt-24 flex gap-6 text-sm text-muted-foreground">
         <a
-          href="https://github.com/freider/buildwise"
+          href="https://github.com/FRD898/buildwise"
           target="_blank"
           rel="noopener noreferrer"
           className="hover:text-foreground"
