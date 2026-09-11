@@ -13,7 +13,11 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { AVAILABLE_TALLERES, TALLER_COUNT } from "@/lib/talleres";
+import {
+  AVAILABLE_TALLERES,
+  TALLER_COUNT,
+  TALLER_SHORT_LABELS,
+} from "@/lib/talleres";
 import { AVAILABLE_CONCEPTOS } from "@/lib/conceptos";
 
 const TALLERES = Array.from({ length: TALLER_COUNT }, (_, i) => i + 1);
@@ -29,7 +33,9 @@ export function TallerSidebar() {
   return (
     <Sidebar>
       <SidebarHeader>
-        <span className="px-2 py-1 text-xl font-bold">BuildWise</span>
+        <Link href="/" className="px-2 py-1 text-xl font-bold">
+          BuildWise
+        </Link>
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
@@ -40,14 +46,25 @@ export function TallerSidebar() {
                 const href = `/taller/${n}`;
                 const available = AVAILABLE.has(n);
                 const label = `Taller ${n}`;
+                const shortLabel = TALLER_SHORT_LABELS[n];
+                const content = (
+                  <>
+                    <span>{label}</span>
+                    <span className="truncate text-sidebar-foreground/70">
+                      {shortLabel}
+                    </span>
+                  </>
+                );
                 return (
                   <SidebarMenuItem key={n}>
                     <SidebarMenuButton
                       isActive={pathname === href}
                       disabled={!available}
-                      render={available ? <Link href={href}>{label}</Link> : undefined}
+                      render={
+                        available ? <Link href={href}>{content}</Link> : undefined
+                      }
                     >
-                      {!available && label}
+                      {!available && content}
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 );
