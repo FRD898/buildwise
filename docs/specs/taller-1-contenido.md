@@ -1,5 +1,7 @@
 # Contenido de taller 1
 
+![Product builder](./images/taller-1-contenido.webp)
+
 | Campo | Valor |
 |-------|-------|
 | **Estado** | Borrador |
@@ -48,6 +50,8 @@ Evidencia: [IEEE Spectrum — AI code review shifts the engineer's role](https:/
 ## 4. Backlog de candidatos (real, del curso)
 
 Backlog real de taller 1, agrupado por a quién sirve — no inventado para este spec. Los tres primeros grupos son los públicos objetivo que nombra `product-brief.md`; los dos últimos (docente, comunidad/negocio) vienen del mismo backlog real y se dejan porque sirven para ver los criterios trabajar en vivo, aunque no sean público objetivo de Buildwise.
+
+21 candidatos en total (B1 a B21).
 
 **Al alumno que se acaba de sumar**
 
