@@ -67,7 +67,7 @@ Backlog real de taller 1, agrupado por a quién sirve — no inventado para este
 | # | Candidato | Qué resuelve |
 |---|---|---|
 | B5 | Conector MCP con plantillas y criterios | Aplicar el método sin salir de donde trabaja |
-| B6 | Progreso y checklist por módulo | Saber dónde voy |
+| B6 | Progreso y checklist por módulo | Trackear avance visible en cada módulo |
 | B7 | Bitácora de entregables | Tener mi portafolio al terminar |
 | B8 | Diagnóstico de mi repositorio | Saber qué me falta del método |
 | B9 | Comparar mi entregable con el de referencia | Saber si lo hice bien |
@@ -88,7 +88,7 @@ Backlog real de taller 1, agrupado por a quién sirve — no inventado para este
 | # | Candidato | Qué resuelve |
 |---|---|---|
 | B16 | Captura de dudas por clase | Material real para el taller 11 |
-| B17 | Feedback por sección | Saber qué contenido falla |
+| B17 | Feedback y comentarios por sección | Saber qué contenido falla y dónde surgen dudas |
 | B18 | Analítica de lectura y abandono | Saber dónde se pierde la gente |
 
 **A la comunidad y al negocio** (fuera de los públicos objetivo del brief — se deja para contraste en vivo)
@@ -96,9 +96,8 @@ Backlog real de taller 1, agrupado por a quién sirve — no inventado para este
 | # | Candidato | Qué resuelve |
 |---|---|---|
 | B19 | Muro de entregables, con permiso | Ver cómo lo resolvieron otros |
-| B20 | Comentarios por sección | Preguntar donde surge la duda |
-| B21 | Aviso de nueva clase por correo | Que vuelvan |
-| B22 | Certificado al completar | Que terminen |
+| B20 | Aviso de nueva clase por correo | Mantenerse informado de nuevo contenido |
+| B21 | Certificado al completar | Validar y reconocer finalización del curso |
 
 ## 5. Criterios de priorización (no técnicos, del brief)
 
@@ -122,11 +121,11 @@ Se presentan los tres en el taller como opciones — el alumno compara el backlo
 
 ## 7. Bloque Aplicación — el agente propone, los criterios deciden
 
-Antes de aplicar los criterios de la sección 5, se le pide al agente que priorice el backlog **sin darle ningún criterio** — solo el texto de los 22 candidatos.
+Antes de aplicar los criterios de la sección 5, se le pide al agente que priorice el backlog **sin darle ningún criterio** — solo el texto de los 21 candidatos.
 
 Lo esperable, y lo que conviene decir en voz alta cuando pase: sin instrucción, el agente tiende a inventar una métrica tipo RICE (alcance, impacto, confianza, esfuerzo) para justificar un orden — números con apariencia de rigor sobre un backlog sin datos reales de uso. Es exactamente la falsa precisión que esta misma spec descarta como método (sección 9, fila RICE).
 
-Después se aplican los 5 criterios no técnicos de la sección 5, en vivo, y se compara: ¿coincide el orden del agente con el de los criterios? El momento más útil para señalar en vivo: varios candidatos de "Al docente" y "A la comunidad y al negocio" (B16-B22) quedan descartados con un único criterio — **sin cuentas ni login** — porque certificado, comentarios, avisos por correo o un muro con permiso necesitan identificar a alguien. No hace falta pasarlos por los 5 criterios completos para descartarlos: uno solo ya alcanza, y eso demuestra por qué el criterio está redactado tan explícito. La lección no es "el agente se equivocó" — es que el agente ejecuta y sintetiza, pero decidir requiere criterio explícito, no solo pedir una priorización.
+Después se aplican los 5 criterios no técnicos de la sección 5, en vivo, y se compara: ¿coincide el orden del agente con el de los criterios? El momento más útil para señalar en vivo: varios candidatos de "Al docente" y "A la comunidad y al negocio" (B16-B21) quedan descartados con un único criterio — **sin cuentas ni login** — porque certificado, comentarios, avisos por correo o un muro con permiso necesitan identificar a alguien. No hace falta pasarlos por los 5 criterios completos para descartarlos: uno solo ya alcanza, y eso demuestra por qué el criterio está redactado tan explícito. La lección no es "el agente se equivocó" — es que el agente ejecuta y sintetiza, pero decidir requiere criterio explícito, no solo pedir una priorización.
 
 Esto no cambia la conclusión del taller — sigue ganando el candidato del conector MCP — lo que se enriquece es el razonamiento en vivo, no el resultado.
 
