@@ -1,10 +1,12 @@
 # Taller 1 — Decide qué construir
 
+![De software engineer a product builder](/images/taller-1/product-builder-3.webp)
+
 ## Apertura
 
 **Qué construimos:** Buildwise, la app donde vive el método de esta ruta — escrita en público, taller a taller.
 
-**Qué problema resuelve:** un ingeniero que ejecuta tareas ya especificadas, pero nunca practicó decidir qué construir antes de que alguien más lo defina por él.
+**Qué problema resuelve:** ingenieros cuya productividad está limitada porque solo ejecutan especificaciones de otros — sin contexto de producto, sin participación en decisiones, sin responsabilidad de punta a punta. Hacerlos más productivos agregando conocimiento de producto y toma de decisiones como parte de su rol.
 
 **Dónde estamos:** arrancamos desde cero — este es el taller 1, no hay punto de control anterior. Todo lo que ya existe está en `docs/` — incluido el [product brief de Buildwise](/conceptos/product-brief).
 
@@ -12,7 +14,7 @@
 
 ## Pregunta
 
-¿Alguna vez construiste algo que nadie terminó usando?
+**¿Alguna vez construiste algo que nadie terminó usando?**
 
 Respóndelo en el chat — o si estás viendo la grabación, pausa un segundo y piénsalo.
 
@@ -39,14 +41,25 @@ Evidencia: [IEEE Spectrum — el rol cambia con la revisión de IA](https://spec
 ## Product builder no es lo mismo que product engineer
 
 - **Product engineer** — término ya establecido: ingeniero con criterio de producto
-- **Product builder** — dueño de punta a punta: decide, construye, responde por el resultado
+- **Product builder** — dueño de punta a punta: ciclo continuo de entender, proponer, especificar, construir, revisar, publicar y medir
 - Esta ruta usa **product builder**
+
+```mermaid
+flowchart LR
+    A["Entender"] --> B["Proponer"]
+    B --> C["Especificar"]
+    C --> D["Construir"]
+    D --> E["Revisar"]
+    E --> F["Publicar"]
+    F --> G["Medir"]
+    G --> A
+```
 
 Fuentes: [Atlassian](https://www.atlassian.com/agile/product-management/product-engineering) · [Marian](https://www.marian.coach/blog/product-builder-role/)
 
 ## El backlog de hoy
 
-22 candidatos reales, agrupados por a quién sirven.
+21 candidatos reales, agrupados por a quién sirven.
 
 ### Al alumno que se acaba de sumar
 
@@ -62,7 +75,7 @@ Fuentes: [Atlassian](https://www.atlassian.com/agile/product-management/product-
 | # | Candidato | Qué resuelve |
 |---|---|---|
 | B5 | Conector MCP con plantillas y criterios | Aplicar el método sin salir de donde trabaja |
-| B6 | Progreso y checklist por módulo | Saber dónde voy |
+| B6 | Progreso y checklist por módulo | Trackear avance visible en cada módulo |
 | B7 | Bitácora de entregables | Tener mi portafolio al terminar |
 | B8 | Diagnóstico de mi repositorio | Saber qué me falta del método |
 | B9 | Comparar mi entregable con el de referencia | Saber si lo hice bien |
@@ -83,7 +96,7 @@ Fuentes: [Atlassian](https://www.atlassian.com/agile/product-management/product-
 | # | Candidato | Qué resuelve |
 |---|---|---|
 | B16 | Captura de dudas por clase | Material real para el taller 11 |
-| B17 | Feedback por sección | Saber qué contenido falla |
+| B17 | Feedback y comentarios por sección | Saber qué contenido falla y dónde surgen dudas |
 | B18 | Analítica de lectura y abandono | Saber dónde se pierde la gente |
 
 ### A la comunidad y al negocio
@@ -91,9 +104,8 @@ Fuentes: [Atlassian](https://www.atlassian.com/agile/product-management/product-
 | # | Candidato | Qué resuelve |
 |---|---|---|
 | B19 | Muro de entregables, con permiso | Ver cómo lo resolvieron otros |
-| B20 | Comentarios por sección | Preguntar donde surge la duda |
-| B21 | Aviso de nueva clase por correo | Que vuelvan |
-| B22 | Certificado al completar | Que terminen |
+| B20 | Aviso de nueva clase por correo | Mantenerse informado de nuevo contenido |
+| B21 | Certificado al completar | Validar y reconocer finalización del curso |
 
 ## Los criterios que aplicamos
 
