@@ -38,7 +38,7 @@ Falta agregar:
 - `@next/mdx`, `@mdx-js/loader`, `@mdx-js/react`, `@types/mdx` — soporte de MDX en Next.js.
 - `mermaid` — dibuja los diagramas en el navegador.
 - `next.config.ts` envuelto con `createMDX()`.
-- `mdx-components.tsx` en la raíz (obligatorio en App Router) — ahí se conectan el modo slide y el render de Mermaid.
+- `mdx-components.tsx` en la raíz (obligatorio en App Router) — ahí se conectan el modo diapositiva y el render de Mermaid.
 
 ## 5. Plan de implementación
 
