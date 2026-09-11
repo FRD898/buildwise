@@ -10,6 +10,7 @@ import {
 } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 type Section = { heading: ReactNode; content: ReactNode[] };
 
@@ -80,19 +81,26 @@ export function TallerSections({ children }: { children: ReactNode }) {
         </div>
         {mode === "presentacion" && slides.length > 0 && (
           <div className="flex items-center gap-3 text-sm text-muted-foreground">
-            <Button variant="ghost" size="sm" onClick={goPrev} disabled={boundedCurrent === 0}>
-              ←
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={goPrev}
+              disabled={boundedCurrent === 0}
+              aria-label="Diapositiva anterior"
+            >
+              <ChevronLeft className="h-4 w-4" />
             </Button>
             <span>
               {boundedCurrent + 1} / {slides.length}
             </span>
             <Button
               variant="ghost"
-              size="sm"
+              size="icon"
               onClick={goNext}
               disabled={boundedCurrent === slides.length - 1}
+              aria-label="Siguiente diapositiva"
             >
-              →
+              <ChevronRight className="h-4 w-4" />
             </Button>
           </div>
         )}
@@ -102,7 +110,7 @@ export function TallerSections({ children }: { children: ReactNode }) {
         className={cn(
           "mx-auto max-w-3xl space-y-4",
           mode === "presentacion" &&
-            "flex min-h-[60vh] max-w-4xl flex-col justify-center gap-6 text-center [&_h2]:text-4xl [&_h3]:text-base [&_table]:text-left [&_ul]:text-left [&_ol]:text-left [&_p]:text-left",
+            "modo-presentacion flex min-h-[60vh] max-w-4xl flex-col justify-center gap-6 rounded-2xl p-8 text-center [&_h2]:border-b [&_h2]:border-primary [&_h2]:pb-6 [&_h2]:text-4xl [&_h2]:text-primary [&_h3]:text-base [&_table]:text-left [&_ul]:text-left [&_ol]:text-left [&_p]:text-left",
         )}
       >
         {mode === "lectura" ? (
