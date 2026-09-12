@@ -18,13 +18,22 @@ import {
   TALLER_COUNT,
   TALLER_SHORT_LABELS,
 } from "@/lib/talleres";
-import { AVAILABLE_CONCEPTOS } from "@/lib/conceptos";
+import { AVAILABLE_PLANTILLAS } from "@/lib/plantillas";
+import { AVAILABLE_PROYECTO } from "@/lib/proyecto";
 
 const TALLERES = Array.from({ length: TALLER_COUNT }, (_, i) => i + 1);
 const AVAILABLE = new Set(AVAILABLE_TALLERES);
 
-const CONCEPTO_LABELS: Record<string, string> = {
+const PLANTILLA_LABELS: Record<string, string> = {
   "product-brief": "Product Brief",
+  prd: "PRD",
+  adr: "ADR",
+};
+
+const PROYECTO_LABELS: Record<string, string> = {
+  brief: "Brief",
+  backlog: "Backlog",
+  "decision-producto": "Decisión de producto",
 };
 
 export function TallerSidebar() {
@@ -73,16 +82,34 @@ export function TallerSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
         <SidebarGroup>
-          <SidebarGroupLabel>Conceptos</SidebarGroupLabel>
+          <SidebarGroupLabel>Proyecto</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {AVAILABLE_CONCEPTOS.map((slug) => {
-                const href = `/conceptos/${slug}`;
+              {AVAILABLE_PROYECTO.map((slug) => {
+                const href = `/proyecto/${slug}`;
                 return (
                   <SidebarMenuItem key={slug}>
                     <SidebarMenuButton
                       isActive={pathname === href}
-                      render={<Link href={href}>{CONCEPTO_LABELS[slug] ?? slug}</Link>}
+                      render={<Link href={href}>{PROYECTO_LABELS[slug] ?? slug}</Link>}
+                    />
+                  </SidebarMenuItem>
+                );
+              })}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+        <SidebarGroup>
+          <SidebarGroupLabel>Plantillas</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {AVAILABLE_PLANTILLAS.map((slug) => {
+                const href = `/plantillas/${slug}`;
+                return (
+                  <SidebarMenuItem key={slug}>
+                    <SidebarMenuButton
+                      isActive={pathname === href}
+                      render={<Link href={href}>{PLANTILLA_LABELS[slug] ?? slug}</Link>}
                     />
                   </SidebarMenuItem>
                 );

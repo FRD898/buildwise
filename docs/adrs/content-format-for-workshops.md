@@ -35,8 +35,15 @@ docs/
       adr.mdx               — qué es un concepto (ADR, PRD, ...) y cuándo se usa —
       prd.mdx                 un archivo por concepto, listo antes del taller que lo
                                introduce; talleres siguientes enlazan, no repiten
+  proyecto/                 — artefactos del caso Buildwise generados en los talleres
+    backlog.md                (ej. backlog, decisiones de producto)
+    decision-producto.md
   adrs/                     — decisiones de este proyecto (no contenido del curso)
+  specs/                    — especificaciones del proyecto
+  system-design/            — system design del proyecto
 ```
+
+`docs/proyecto/` agrupa los artefactos del caso que se construyen en vivo: backlog de candidatos, decisiones de producto, etc. No reemplaza a `docs/adrs/`, `docs/specs/` ni `docs/system-design/`: cada tipo de documento sigue en su propia carpeta.
 
 `templates/*.md` (plantilla para copiar) y `criterios/taller-N.md` (criterios de decisión) solo existen cuando ese taller los necesita — no son carpetas que se llenan siempre, para cada taller. Ver [Alternativas consideradas](#alternativas-consideradas) para por qué el concepto va separado del resumen de la clase.
 
@@ -90,7 +97,7 @@ Sin juego de diapositivas aparte — el mismo archivo sirve para los dos modos.
 
 - Una sola fuente por taller — no hay diferencias entre "lo que se presenta en clase" y "lo que se lee después".
 - Diagramas versionados como texto, se pueden comparar en git, sin depender de nada externo.
-- Estructura `docs/`, `templates/`, `criterios/` queda fija y replicable taller a taller, tal como pide el brief.
+- Estructura `docs/` (curso, proyecto, adrs, specs, system-design), `templates/` y `criterios/` queda fija y replicable taller a taller, tal como pide el brief.
 
 ### Restricciones / limitaciones
 
