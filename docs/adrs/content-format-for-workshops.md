@@ -41,15 +41,25 @@ docs/
   adrs/                     — decisiones de este proyecto (no contenido del curso)
   specs/                    — especificaciones del proyecto
   system-design/            — system design del proyecto
+templates/
+  *.md                      — plantillas copiables para el alumno (product brief, PRD, ADR)
+criterios/
+  taller-N.md               — criterios de decisión de un taller
 ```
 
-`docs/proyecto/` agrupa los artefactos del caso que se construyen en vivo: backlog de candidatos, decisiones de producto, etc. No reemplaza a `docs/adrs/`, `docs/specs/` ni `docs/system-design/`: cada tipo de documento sigue en su propia carpeta.
+Cada carpeta tiene un propósito distinto:
 
-`templates/*.md` (plantilla para copiar) y `criterios/taller-N.md` (criterios de decisión) solo existen cuando ese taller los necesita — no son carpetas que se llenan siempre, para cada taller. Ver [Alternativas consideradas](#alternativas-consideradas) para por qué el concepto va separado del resumen de la clase.
+- **`docs/curso/conceptos/`** explica qué es un concepto y cuándo usarlo (ej. qué es un ADR). No contiene las decisiones reales del proyecto.
+- **`templates/`** contiene plantillas que el alumno puede copiar y adaptar a su propio proyecto.
+- **`docs/proyecto/`** agrupa los artefactos del caso Buildwise que se construyen en vivo: backlog de candidatos, decisiones de producto, etc.
+- **`docs/adrs/`**, **`docs/specs/`** y **`docs/system-design/`** son documentos técnicos del proyecto; cada tipo sigue en su propia carpeta.
+- **`criterios/`** guarda los criterios de decisión de cada taller.
+
+`docs/proyecto/` no reemplaza a `docs/adrs/`, `docs/specs/` ni `docs/system-design/`. `templates/` y `criterios/` solo existen cuando ese taller los necesita — no son carpetas que se llenan siempre, para cada taller. Ver [Alternativas consideradas](#alternativas-consideradas) para por qué el concepto va separado del resumen de la clase.
 
 **Nombres en inglés o español:** el propio `product-brief.md` ya fija la regla — escribe `` `docs/`, `templates/`, `criterios/` `` mezclando inglés (sustantivos genéricos de ingeniería, prestados igual que ADR/PRD/MDX) con español (`criterios`, vocabulario propio del curso). Se sigue esa misma línea: `docs/`, `templates/`, `adrs/` en inglés (nadie del curso los lee como contenido); `curso/`, `taller-N.mdx`, `conceptos/`, `criterios/` en español (palabras que el alumno ya escucha en clase). El contenido de cada archivo, siempre en español, sin excepción.
 
-El `product-brief.md` no se repite por taller: vive en su propia ruta y los talleres que lo necesiten enlazan a él. Mismo criterio para `docs/curso/conceptos/*.mdx`.
+El `product-brief.md` no se repite por taller: vive en `docs/product-brief.md` y se expone como `/proyecto/brief`. Los talleres que lo necesiten enlazan a esa ruta. Mismo criterio para `docs/curso/conceptos/*.mdx`.
 
 Nota: `docs/curso/conceptos/adr.mdx` (qué es un ADR, en general) y `docs/adrs/` (las decisiones reales de este proyecto) son cosas distintas — no confundir.
 
