@@ -8,7 +8,7 @@
 
 **Qué problema resuelve:** ingenieros cuya productividad está limitada porque solo ejecutan especificaciones de otros — sin contexto de producto, sin participación en decisiones, sin responsabilidad de punta a punta. Hacerlos más productivos agregando conocimiento de producto y toma de decisiones como parte de su rol.
 
-**Dónde estamos:** arrancamos desde cero — este es el taller 1, no hay punto de control anterior. Todo lo que ya existe está en `docs/` — incluido el [product brief de Buildwise](/conceptos/product-brief).
+**Dónde estamos:** arrancamos desde cero — este es el taller 1, no hay punto de control anterior. Todo lo que ya existe está en `docs/` — incluido el [product brief de Buildwise](/proyecto/brief).
 
 **Qué hacemos hoy:** decidimos, con criterios explícitos, qué construye Buildwise primero.
 
@@ -38,11 +38,9 @@ Evidencia: [LogRocket — Get engineers involved earlier](https://blog.logrocket
 
 Evidencia: [IEEE Spectrum — el rol cambia con la revisión de IA](https://spectrum.ieee.org/ai-code-review-software-engineers)
 
-## Product builder no es lo mismo que product engineer
+## Product builder = dueño de punta a punta del ciclo
 
-- **Product engineer** — término ya establecido: ingeniero con criterio de producto
-- **Product builder** — dueño de punta a punta: ciclo continuo de entender, proponer, especificar, construir, revisar, publicar y medir
-- Esta ruta usa **product builder**
+Esta ruta usa **product builder**: decide qué construir, lo construye y responde por el resultado.
 
 ```mermaid
 flowchart LR
@@ -56,6 +54,17 @@ flowchart LR
 ```
 
 Fuentes: [Atlassian](https://www.atlassian.com/agile/product-management/product-engineering) · [Marian](https://www.marian.coach/blog/product-builder-role/)
+
+## De dónde salen las opciones del backlog
+
+Las opciones no aparecen solas. Un product builder las captura de señales reales:
+
+- **La gente que usa el producto** — feedback, soporte, entrevistas, observación.
+- **Tu propio equipo** — fricciones, deuda técnica, oportunidades detectadas por diseño, QA, ventas.
+- **La estrategia del negocio** — metas, competencia, regulación.
+- **Una conversación con el agente** — como hicimos para este curso.
+
+En Buildwise, los 21 candidatos de hoy salieron de revisar los 3 públicos objetivo del [product brief](/proyecto/brief) y de la conversación con el agente.
 
 ## El backlog de hoy
 
@@ -109,13 +118,13 @@ Fuentes: [Atlassian](https://www.atlassian.com/agile/product-management/product-
 
 ## Los criterios que aplicamos
 
-Ninguno técnico — salen del [product brief de Buildwise](/conceptos/product-brief).
+Ninguno técnico — salen del [product brief de Buildwise](/proyecto/brief).
 
 | Criterio | De dónde sale |
 |---|---|
 | Disponible en el flujo real de trabajo | "no en una página aparte" |
 | No requiere memorizar ni copiar a mano | "sin que haga falta memorizarlos ni copiarlos a mano" |
-| Origen rastreable a una sesión del curso | "nada inventado para llenar un catálogo" |
+| Origen en una sesión del curso | "cada artefacto tiene origen rastreable en una sesión del curso" |
 | Replicable sin depender de talleres anteriores | "sin depender de haber visto los anteriores" |
 | Sin cuentas ni login | "todo el contenido es público" |
 
@@ -131,25 +140,35 @@ Ninguna es "la correcta" — elige la que te resulte más clara.
 
 ```mermaid
 flowchart TD
-    A[Backlog: 22 candidatos] --> B[Agente, sin criterio]
+    A[Backlog: 21 candidatos] --> B[Agente nuevo, solo el texto]
     A --> C[Criterios explícitos]
     B --> D{Comparamos}
     C --> D
     D --> E[Decisión documentada]
 ```
 
-Primero el agente prioriza solo, sin criterio. Después aplicamos los 5 criterios.
+Primero el agente recibe **solo el texto del backlog**, sin criterios y sin contexto del curso, y propone un orden. Después aplicamos nosotros los 5 criterios y comparamos.
 
 Un solo criterio — **sin cuentas ni login** — ya descarta media docena de candidatos.
 
 ## Cierre
 
-**Entregable de esta semana:**
+En este taller no decidimos con una votación ni con una fórmula. Decidimos aplicando criterios explícitos, en público, sobre opciones reales.
 
-- `docs/decision-producto.md` — la decisión, publicada
-- `criterios/priorizacion.md` — los criterios, documentados
+**Material previo al taller:**
+
+- Los 5 criterios de priorización, extraídos del [product brief de Buildwise](/proyecto/brief) y documentados en [`criterios/priorizacion.md`](/criterios/priorizacion).
+- El [backlog completo](/proyecto/backlog) de 21 candidatos.
+
+**Resultado del taller:**
+
+- [`docs/proyecto/decision-producto.md`](/proyecto/decision-producto) — la decisión final, registrada al cierre de la sesión.
 
 ## Extra — para leer después
 
 - [Product Builder — qué es (ES)](https://www.productbuilder.net/es/learn/what-is-a-product-builder)
 - [Sprintt.ai — el rol de product builder en 2026](https://sprintt.ai/blog/product-builder-role-2026) (predicción de industria, la fuente más especulativa de esta lista)
+- [Atlassian — Product backlog](https://www.atlassian.com/agile/scrum/backlogs)
+- [PostHog — How we decide what to build](https://posthog.com/newsletter/how-we-decide-what-to-build)
+
+**Nota:** *Product engineer* es el término más usado en la industria para "ingeniero con criterio de producto". Usamos **product builder** porque implica dueño del ciclo completo: entender, proponer, especificar, construir, revisar, publicar y medir.
