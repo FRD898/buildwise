@@ -20,6 +20,7 @@ import {
 } from "@/lib/talleres";
 import { AVAILABLE_PLANTILLAS } from "@/lib/plantillas";
 import { AVAILABLE_PROYECTO } from "@/lib/proyecto";
+import { AVAILABLE_CRITERIOS } from "@/lib/criterios";
 
 const TALLERES = Array.from({ length: TALLER_COUNT }, (_, i) => i + 1);
 const AVAILABLE = new Set(AVAILABLE_TALLERES);
@@ -34,6 +35,10 @@ const PROYECTO_LABELS: Record<string, string> = {
   brief: "Brief",
   backlog: "Backlog",
   "decision-producto": "Decisión de producto",
+};
+
+const CRITERIO_LABELS: Record<string, string> = {
+  priorizacion: "Priorización",
 };
 
 export function TallerSidebar() {
@@ -92,6 +97,24 @@ export function TallerSidebar() {
                     <SidebarMenuButton
                       isActive={pathname === href}
                       render={<Link href={href}>{PROYECTO_LABELS[slug] ?? slug}</Link>}
+                    />
+                  </SidebarMenuItem>
+                );
+              })}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+        <SidebarGroup>
+          <SidebarGroupLabel>Criterios</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {AVAILABLE_CRITERIOS.map((slug) => {
+                const href = `/criterios/${slug}`;
+                return (
+                  <SidebarMenuItem key={slug}>
+                    <SidebarMenuButton
+                      isActive={pathname === href}
+                      render={<Link href={href}>{CRITERIO_LABELS[slug] ?? slug}</Link>}
                     />
                   </SidebarMenuItem>
                 );
