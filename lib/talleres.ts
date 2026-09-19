@@ -1,5 +1,5 @@
 export const TALLER_COUNT = 11;
-export const AVAILABLE_TALLERES = [1];
+export const AVAILABLE_TALLERES = [1, 2];
 
 export const TALLER_SHORT_LABELS: Record<number, string> = {
   1: "Decide qué construir",
