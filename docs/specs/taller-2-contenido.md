@@ -10,7 +10,7 @@
 
 ## 1. Resumen
 
-Taller 1 decidió *qué* construir: el conector MCP (B5), sobre un backlog ya armado y 5 criterios ya fijos ([`decision-producto.md`](decision-producto.md)). Taller 2 no construye el conector todavía — cierra el hueco que taller 1 dejó sin mostrar (de dónde sale una opción antes de existir en una tabla) y responde, con el mínimo trabajo posible, dos preguntas que solo se resuelven probando: cómo debe actuar el agente ante lo que pide el alumno, y si un servidor MCP mínimo puede entregarle una plantilla del curso al agente. Este spec define el contenido pedagógico que alimenta `docs/curso/taller-2.mdx`.
+Taller 1 decidió *qué* construir: el conector MCP (B5), sobre un backlog ya armado y 5 criterios ya fijos ([`decision-producto.md`](../proyecto/decision-producto.md)). Taller 2 no construye el conector todavía — cierra el hueco que taller 1 dejó sin mostrar (de dónde sale una opción antes de existir en una tabla) y responde, con el mínimo trabajo posible, dos preguntas que solo se resuelven probando: cómo debe actuar el agente ante lo que pide el alumno, y si un servidor MCP mínimo puede entregarle una plantilla del curso al agente. Este spec define el contenido pedagógico que alimenta `docs/curso/taller-2.mdx`.
 
 ## 2. Alcance
 
