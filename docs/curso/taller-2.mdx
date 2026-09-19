@@ -1,0 +1,119 @@
+# Taller 2 — Investiga y prototipa
+
+![Prototipa primero la parte más riesgosa](/images/taller-2/prototype-risky-part.webp)
+
+## Apertura
+
+**Qué construimos:** el conector MCP que trae el método de este curso al agente del alumno.
+
+**Qué problema resuelve:** aplicar el método sin salir de donde ya trabajas, en vez de ir y venir a buscar plantillas y criterios en otro lado.
+
+**Dónde estamos:** la semana pasada ganó el conector MCP ([`decision-producto.md`](/proyecto/decision-producto)). Pero esa matriz ya venía con el backlog armado — no vimos de dónde sale una opción antes de estar en una tabla. Hoy vemos eso, antes de tocar código.
+
+**Qué hacemos hoy:** no construimos el conector todavía. Investigamos cómo otros resuelven un problema parecido y probamos, con el mínimo código posible, si la pieza técnica más riesgosa funciona. Punto de control de partida: `taller-02-inicio`.
+
+## Pregunta
+
+Vamos a construir el conector MCP. **¿Qué parte no estás seguro de que vaya a funcionar?**
+
+Respóndelo en el chat — o si ves la grabación, pausa y piénsalo. Guarda tu apuesta: al final la revisamos.
+
+## Un flujo, nombres distintos
+
+Definir el problema, investigar y prototipar *antes* de construir se repite, con otro nombre, en más de un método.
+
+| Método | Flujo completo, en su propio orden |
+|---|---|
+| Este taller | **Definir el problema** → **Investigar** → **Prototipar** → Decidir (taller 3) → Construir (taller 4+) |
+| [Shape Up](https://basecamp.com/shapeup) | **Set Boundaries** → **Breadboarding** → Betting → Building |
+| [Skills de Matt Pocock](https://www.aihero.dev/skills) | **`grill-me`** → **`research`** / **`prototype`** → `to-spec` → `to-tickets` → `implement` |
+| [OpenSpec](https://openspec.dev/) | `explore` → `propose` → `apply` → `archive` |
+| [Design Sprint](https://www.gv.com/sprint/) (solo referencia) | **Map** → **Sketch** → Decide → **Prototype** → Test |
+
+En negrita, el tramo que comparamos (el problema ya lo definimos en el taller 1). Ninguno calza exacto; lo que se repite es probar antes de construir.
+
+## Cuatro formas de resolver una duda antes de construir
+
+[MCP](https://modelcontextprotocol.io/docs/2026-07-28/getting-started/intro), lo mínimo: un protocolo que conecta un agente con herramientas externas. Un servidor MCP expone funciones con nombre (como `obtener_plantilla_product_brief`) y el agente decide cuál llamar.
+
+| Forma | Qué responde | Hoy |
+|---|---|---|
+| Investigar (`research`) | ¿Cómo resuelven otros algo parecido? | Sí |
+| Definir el comportamiento esperado | ¿Qué debería hacer el agente ante cada pedido? Se modela antes de construir; hoy, en papel | Sí |
+| Spike técnico | ¿Funciona de verdad con un servidor real? | Sí |
+| Prototipo de interfaz (`prototype`, rama de interfaz) | ¿Cómo debería verse? ¿Se entiende la pantalla? | No hoy (talleres 7-9) |
+
+Para decidir cuál usar según tu duda, con ejemplos: [Qué probar primero](/criterios/que-probar).
+
+**Spike ≠ prueba de concepto (PoC).** Una PoC demuestra que algo es viable en general. Un spike responde **una** pregunta angosta, con condición de parada fijada antes de empezar, y su código no se reutiliza.
+
+## Investigación rápida
+
+Le presentamos el problema al agente **sin decirle qué alternativa comparar**. Si existe algo distinto a MCP, tiene que salir de la investigación.
+
+```
+Este proyecto (el curso) publica plantillas y criterios de revisión como
+markdown versionado — es lo que enseña. Vamos a exponérselos al agente de
+cada alumno, en su propio proyecto, sin que el alumno los busque y copie a
+mano, sin login, y sin que tenga que modificar la estructura o dependencias
+de su propio proyecto para lograrlo.
+
+¿De qué forma se le puede dar acceso o más contexto sobre esta información
+al agente del estudiante, y cuándo conviene cada una? Dame la diferencia
+central en una frase, y qué costo tiene elegir mal.
+```
+
+**Antes de leer la respuesta, escribe tu propia apuesta.** Luego compárala: ¿en qué no coinciden? ¿qué falta?
+
+## Comportamiento esperado
+
+Cómo debería responder el conector, con dos herramientas que imaginamos: `obtener_plantilla` y `obtener_criterios`.
+
+| Situación | Lo que pide el alumno | Lo que hace el agente | Qué debería pasar después |
+|---|---|---|---|
+| Pedido claro | "necesito la plantilla de product brief" | Llama `obtener_plantilla` y la entrega completa | El alumno confirma o edita |
+| Pedido ambiguo | "dame los criterios" | Pregunta de qué artefacto (¿especificación? ¿código?) | Se aclara antes de llamar cualquier herramienta |
+| Dos herramientas que se parecen | "cómo reviso mi PRD" | ¿`obtener_plantilla` o `obtener_criterios`? | Debe llamar `obtener_criterios`, no la plantilla |
+
+## Spike técnico
+
+Antes de correr nada, definimos:
+
+```
+Objetivo:  comprobar que un servidor MCP mínimo puede entregarle una
+           plantilla del curso al agente del alumno.
+Alcance:   una herramienta sin parámetros, obtener_plantilla_product_brief,
+           que devuelve el archivo real templates/product-brief.md.
+           Sin login, sin más herramientas ni plantillas.
+Pregunta:  ¿El agente llama la herramienta y recibe la plantilla
+           completa?
+Éxito:     3 de 3 intentos, con el pedido redactado distinto cada vez.
+```
+
+Regla del curso: el código se guarda en `spike/taller-02` como referencia y no se reutiliza. Lo que importa es el resultado, que se anota en `docs/hallazgos-taller-02.md`. Si un intento falla, también es un resultado válido.
+
+## Cierre
+
+Hoy no construimos el conector: vimos de dónde sale una opción, cómo debería comportarse el agente y si la pieza técnica más riesgosa funciona.
+
+**Volvamos a la pregunta de apertura:** ¿qué apostaste que era lo más riesgoso? ¿Fue eso lo que probamos hoy?
+
+**Material previo al taller:**
+
+- Cómo elegir la prueba según el tipo de duda, documentado en [`criterios/que-probar.md`](/criterios/que-probar).
+
+**Resultado del taller:**
+
+- `docs/hallazgos-taller-02.md` — la investigación (pregunta, apuesta y respuesta del agente) y el resultado del spike: si funcionó y qué observamos.
+
+Punto de control de cierre: `taller-02-fin`.
+
+## Extra — para leer después
+
+- [¿Qué es MCP? — modelcontextprotocol.io (versión 2026-07-28)](https://modelcontextprotocol.io/docs/2026-07-28/getting-started/intro) — la definición completa, en la fuente oficial.
+- [Shape Up — Ryan Singer / Basecamp](https://basecamp.com/shapeup)
+- OpenSpec — Fission-AI: [página web](https://openspec.dev/) y [repositorio](https://github.com/Fission-AI/OpenSpec)
+- Skills de Matt Pocock: [página web](https://www.aihero.dev/skills) y [repositorio](https://github.com/mattpocock/skills) — incluye el skill [`prototype`](https://github.com/mattpocock/skills/blob/main/skills/engineering/prototype/SKILL.md), con rama de lógica y rama de interfaz.
+- [The Design Sprint — GV (Jake Knapp)](https://www.gv.com/sprint/) — solo referencia.
+- [The Practice of Sizing Spikes with Story Points — Agile Alliance](https://agilealliance.org/the-practice-of-sizing-spikes-with-story-points/) — define qué es un spike: una tarea para responder una pregunta, no para producir algo entregable.
+- [Writing effective tools for AI agents — Anthropic Engineering](https://www.anthropic.com/engineering/writing-tools-for-agents) — empieza por un prototipo de la herramienta en un servidor MCP local, y explica por qué herramientas parecidas o vagas confunden al agente.
