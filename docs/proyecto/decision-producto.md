@@ -44,7 +44,7 @@ criterio, no por perder la matriz.
 
 ## Matriz de puntuación — candidato × criterio
 
-Los 5 criterios son los de [`criterios/priorizacion.md`](/criterios/priorizacion):
+Los 5 criterios son los de [`docs/proyecto/priorizacion.md`](/proyecto/priorizacion):
 flujo real, no memorizar, origen en sesión, replicable, sin login.
 
 | # | Candidato | Flujo real | No memorizar | Origen sesión | Replicable | Sin login | Total |
