@@ -1,4 +1,4 @@
-# Criterios de priorización — Taller 1
+# Criterios de priorización
 
 Estos criterios se usan para decidir qué construye Buildwise primero. No son técnicos: salen directamente del [product brief de Buildwise](/proyecto/brief).
 
