@@ -40,6 +40,7 @@ const PROYECTO_LABELS: Record<string, string> = {
 const CRITERIO_LABELS: Record<string, string> = {
   priorizacion: "Priorización",
   "que-probar": "Qué probar primero",
+  "revisar-especificacion": "Revisar una especificación",
 };
 
 export function TallerSidebar() {
