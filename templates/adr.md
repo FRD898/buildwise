@@ -2,10 +2,11 @@
 Ejemplo de referencia, no un estándar obligatorio. Un ADR documenta una decisión técnica
 no obvia: el contexto que la exige, qué se decidió, qué otras opciones se descartaron y
 por qué, y qué consecuencias trae. No es para cualquier cambio — solo para decisiones que
-alguien va a cuestionar después ("¿por qué no hicimos X?"). Ver
-docs/adrs/content-format-for-workshops.md como ejemplo lleno. Nombra el archivo con slug
-descriptivo, sin prefijo numérico (kebab-case-title.md). Adapta las secciones a tu propio
-flujo si te sirve más así.
+alguien va a cuestionar después ("¿por qué no hicimos X?"). Adapta las secciones a tu
+propio flujo si te sirve más así.
+
+Sugerencia, si tu proyecto no tiene otra convención: guárdalo en docs/adrs/ con un nombre
+descriptivo, sin prefijo numérico (kebab-case-title.md).
 -->
 
 # [Título de la decisión]

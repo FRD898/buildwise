@@ -1,4 +1,4 @@
-# Qué probar primero — Taller 2
+# Qué probar primero
 
 Antes de construir, elige la prueba según el tipo de duda. Regla: cada prueba responde una sola pregunta; si no puedes decir cuál, no la hagas todavía.
 
