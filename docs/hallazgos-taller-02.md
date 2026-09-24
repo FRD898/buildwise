@@ -1,5 +1,14 @@
 # Hallazgos — Taller 2
 
+## Investigación rápida: ¿MCP u otra forma?
+
+Registrada después de clase: en vivo no quedó escrita.
+
+- **Pregunta:** el prompt de "Investigación rápida" de `docs/curso/taller-2.mdx`. Presenta el problema sin nombrar alternativas: exponer plantillas y criterios al agente de cada alumno, sin que los busque y copie a mano, sin login y sin modificar la estructura de su proyecto.
+- **Apuesta y respuesta completa del agente:** no se guardaron.
+- **Alternativa que apareció:** skills (instrucciones y archivos que el agente carga desde el proyecto o el entorno del alumno).
+- **Decisión en clase:** servidor MCP. El plan era dejarla anotada sin decidir (CA-4 de `docs/specs/taller-2-contenido.md`), pero se decidió en vivo. Las razones dadas en clase: sirve mejor para enseñar, una skill no se actualiza sola, y sirve más contenido (esta última no se sostiene: una skill también puede traer varios archivos). El detalle está en el ADR [Distribuir el contenido del curso como servidor MCP](adrs/distribuir-como-servidor-mcp.md).
+
 ## Spike técnico: servidor MCP mínimo
 
 **Resultado: parcial — 2 de 3. El criterio de éxito, tal como se definió, no se cumple.**
