@@ -1,4 +1,4 @@
-# Revisar una especificación — Taller 3
+# Revisar un PRD — Taller 3
 
 Preguntas para revisar un PRD antes de construir. Sirven para cualquier especificación.
 
