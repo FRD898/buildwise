@@ -35,10 +35,10 @@ const PROYECTO_LABELS: Record<string, string> = {
   brief: "Brief",
   backlog: "Backlog",
   "decision-producto": "Decisión de producto",
+  priorizacion: "Priorización",
 };
 
 const CRITERIO_LABELS: Record<string, string> = {
-  priorizacion: "Priorización",
   "que-probar": "Qué probar primero",
   "revisar-prd": "Revisar un PRD",
 };
