@@ -1,6 +1,6 @@
 # Estructura de presentación en clase
 
-**Estado:** Propuesta
+**Estado:** Aceptada
 **Fecha:** 2026-09-10
 **Quién decide:** Freider Achic
 **ADRs relacionados:** [Formato de contenido para talleres](./content-format-for-workshops.md)
@@ -20,10 +20,10 @@ Un estudio comparó juegos de diapositivas tradicionales (título + viñetas) co
 **Secciones fijas, mismo orden en los once talleres:**
 
 1. **Apertura** — qué construimos · qué problema resuelve · dónde estamos (un link al taller anterior relevante) · qué hacemos hoy. Mismo formato que ya usa el curso en vivo.
-2. **Pregunta** (1 diapositiva) — pregunta corta de experiencia propia, formulada doble: *"respóndelo en el chat, o si ves la grabación, pausa y piénsalo"*. Se retoma en vivo (mitad y cierre) — verbal, sin segunda diapositiva.
+2. **Pregunta** (1 diapositiva) — pregunta corta de experiencia propia, formulada doble: *"respóndelo en el chat, o si ves la grabación, pausa y piénsalo"*. Se retoma en el Cierre, por escrito, para quien ve la grabación; a mitad de clase, solo en voz.
 3. **Concepto** — **máximo 3 ideas** (no un número de diapositivas fijo; cada idea puede ocupar 1-3 diapositivas).
-4. **Aplicación** — sin transcripción de lo construido/decidido en vivo. Una diapositiva: qué cambió + link al checkpoint.
-5. **Cierre** — el entregable de la semana, ya definido por el plan de cada taller (fuera de este repo).
+4. **Aplicación** — las instrucciones para hacerlo, no el resultado: el prompt copiable, la apuesta y qué mirar. Una diapositiva por paso. Sin transcripción de lo construido/decidido en vivo: eso queda en el checkpoint de cierre.
+5. **Cierre** — la pregunta de apertura retomada, el entregable de la semana (ya definido por el plan de cada taller, fuera de este repo) y el checkpoint de cierre. Puede ocupar más de una diapositiva.
 6. **Extra** (opcional, solo lectura) — lo que no entró arriba, marcado "para leer después".
 
 **Cada diapositiva de Concepto/Aplicación — assertion-evidence:** título = afirmación, cuerpo = evidencia visual, máx 4 viñetas de ~4 palabras. Si no entra, se parte en más diapositivas, no se comprime texto.
@@ -48,7 +48,7 @@ Un estudio comparó juegos de diapositivas tradicionales (título + viñetas) co
 
 - Mismo orden de secciones cada taller, sin necesitar minutos para eso.
 - Cap de 3 ideas obliga a elegir, no a listar.
-- Aplicación queda reconocida como bloque que no es una diapositiva — el `.mdx` no finge una diapositiva por paso.
+- Aplicación queda como instrucciones reproducibles: quien ve la grabación puede hacer la práctica con la página, sin transcripción de lo que salió en vivo.
 - Contenido específico de cada taller (qué idea, qué pregunta, qué entregable) se sigue decidiendo en el spec de esa clase.
 
 **Revisar si:** algún taller necesita una tabla/comparación que no cabe en 4 viñetas ni como imagen; o el cap de 3 ideas no alcanza para un taller con más carga conceptual.
