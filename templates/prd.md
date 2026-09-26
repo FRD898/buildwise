@@ -21,7 +21,7 @@ descriptivo, sin prefijo numérico (kebab-case-title.md).
 
 | Campo | Valor |
 |-------|-------|
-| **Estado** | Borrador \| En progreso \| Listo |
+| **Estado** | Borrador \| Revisado \| En progreso \| Listo |
 | **Módulo** | [a qué parte del proyecto pertenece] |
 | **Depende de** | [otra spec o funcionalidad que tiene que existir antes, o "Nada"] |
 | **Diseño técnico** | [link, "Pendiente" o "Ninguno"] |
