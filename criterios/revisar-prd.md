@@ -8,6 +8,8 @@ Quien revisa no debería ser quien escribió: el autor lee lo que quiso decir, n
 
 > Un PRD describe el problema, no la solución, y lo lee todo el equipo, no solo quien construye.
 
+- **¿Dice qué problema resuelve y para quién?** Si el resumen describe la funcionalidad pero no el problema, no se puede juzgar si lo resuelve.
+- **¿Todo lo que incluye sirve a ese problema?** Un camino o un criterio que no lo resuelve sobra, o es otra funcionalidad.
 - **¿Se coló el cómo?** Librerías, estructura de código, pasos de implementación. Eso no va en la spec: es implementación.
 - **¿Lo entendería alguien de producto sin conocimientos técnicos?** Si hay un término técnico sin explicar, no.
 - **¿Dice qué no incluye, y por qué?** Si faltan, quien escribió tiene que decidirlos.
@@ -21,10 +23,11 @@ Quien revisa no debería ser quien escribió: el autor lee lo que quiso decir, n
 
 ## 3. ¿Cada criterio se puede marcar?
 
-> Alguien que no lo escribió puede decir sí o no, sin preguntarte.
+> Alguien que no lo escribió puede decir si lo construido lo cumple, sin preguntarte.
 
 - **¿Cada criterio se puede marcar como cumplido o no?** "Rápido", "correcto", "intuitivo" o "sin errores" no se pueden marcar.
 - **¿Cada criterio dice una sola cosa?** Si tiene "y además", son dos.
+- **Si el resultado depende de un modelo, ¿dice en cuántos intentos se prueba?** Un modelo puede responder distinto cada vez: una sola prueba que pasa no alcanza.
 - **¿Cada criterio tiene un código estable?** Sin código no se puede citar en un commit o un PR.
 
 ## 4. ¿Se puede construir sin preguntarte?
