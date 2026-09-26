@@ -83,6 +83,8 @@ Dos capas, según quién responde. "El conector debe…" responde igual cada vez
 - **CONECTOR-9** — Cuando el alumno pide varias plantillas o criterios en un mismo pedido, el agente del alumno, con el conector instalado, debe entregarle todos los que pidió, en 3 de 3 intentos con pedidos redactados distinto.
 - **CONECTOR-10** — Si el alumno pide una plantilla o unos criterios que el curso no tiene, entonces el agente del alumno, con el conector instalado, debe decirle que el curso no los tiene en vez de escribir unos propios, en 3 de 3 intentos con pedidos redactados distinto.
 - **CONECTOR-11** — Si el alumno pide criterios para revisar un documento que no tiene criterios, entonces el agente del alumno, con el conector instalado, no debe entregarle la plantilla de ese documento en su lugar, en 3 de 3 intentos con pedidos redactados distinto.
+- **CONECTOR-19** — Cuando el alumno pide criterios que no son para revisar un documento, el agente del alumno, con el conector instalado, debe entregarle esos criterios, en 3 de 3 intentos con pedidos redactados distinto.
+- **CONECTOR-20** — Si el alumno pide una plantilla o unos criterios que el curso no tiene, entonces el agente del alumno, con el conector instalado, debe mostrarle lo que sí existe, en 3 de 3 intentos con pedidos redactados distinto.
 
 **La lista y lo que no existe**
 - **CONECTOR-12** — Cuando se le pide la lista, el conector debe mostrar junto a cada elemento la descripción que escribió el curso para ese archivo.
