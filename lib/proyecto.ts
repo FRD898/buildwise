@@ -5,6 +5,7 @@ export const PROYECTO: Record<string, () => Promise<{ default: ComponentType }>>
   backlog: () => import("@/docs/proyecto/backlog.md"),
   "decision-producto": () => import("@/docs/proyecto/decision-producto.md"),
   priorizacion: () => import("@/docs/proyecto/priorizacion.md"),
+  "hallazgos-taller-02": () => import("@/docs/hallazgos-taller-02.md"),
 };
 
 export const AVAILABLE_PROYECTO = Object.keys(PROYECTO);
