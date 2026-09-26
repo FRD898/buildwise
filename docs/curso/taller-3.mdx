@@ -1,0 +1,194 @@
+# Taller 3 — Escribe especificaciones
+
+![Los límites y los criterios los decides tú](/images/taller-3/write-the-spec.webp)
+
+## Apertura
+
+**Qué construimos:** el conector Buildwise, un servidor MCP que trae el método de este curso al agente del alumno.
+
+**Qué problema resuelve:** aplicar el método sin salir de donde ya trabajas, en vez de ir y venir a buscar plantillas y criterios en otro lado.
+
+**Dónde estamos:** en el taller 2 no construimos el conector: probamos la parte más riesgosa ([`hallazgos-taller-02.md`](/proyecto/hallazgos-taller-02)). El servidor entregó la plantilla completa siempre que el agente lo llamó. Pero el criterio de éxito era 3 de 3 y salió 2 de 3: con un pedido indirecto, el agente no relacionó lo que le pedían con la herramienta.
+
+**Qué hacemos hoy:** ordenamos lo que dejó la exploración y lo convertimos en la especificación del conector: el documento que el agente va a leer cuando lo construya, y contra el que vamos a revisar lo que construya. Punto de control de partida: `taller-03-inicio`.
+
+## Pregunta
+
+La última vez que un agente te entregó algo distinto a lo que querías, **¿qué pasó: hizo de más, se quedó corto, o inventó algo que no le dijiste?**
+
+Respóndelo en el chat, o si ves la grabación, pausa y piénsalo. Guarda tu respuesta: al final la ubicamos.
+
+## Los límites y los criterios los decides tú, no el modelo
+
+> *"The PRD communicates to the entire product team."* — Marty Cagan, [*How To Write a Good PRD*](https://www.svpg.com/wp-content/uploads/2024/07/How-To-Write-a-Good-PRD.pdf), 2005
+
+| Documento | Qué responde | Quién lo lee | En el curso |
+|---|---|---|---|
+| **PRD** | Qué problema, para quién, qué debe hacer | Todo el equipo | [`templates/prd.md`](/plantillas/prd) |
+| **Spec funcional** | Cómo se comporta, visto desde quien lo usa | Equipo + quien construye | [`templates/prd.md`](/plantillas/prd) |
+| **Spec técnica** | Cómo funciona por dentro | Ingeniería | Diseño técnico |
+
+- **En el curso:** PRD y spec funcional son un solo documento
+- **El cómo:** si se lo dictas al agente, estorbas
+- **Qué no hace y cuándo está listo:** van siempre
+- **Arreglo puntual:** sin spec, directo al agente
+
+<small>Spec funcional y spec técnica: Joel Spolsky, [*Painless Functional Specifications, Part 2*](https://www.joelonsoftware.com/2000/10/03/painless-functional-specifications-part-2-whats-a-spec/), 2000.</small>
+
+## Nuestra plantilla define qué se construye, no cómo
+
+*Spec-driven development* (SDD): la spec se escribe antes y es la entrada del agente. Nuestra forma: [`templates/prd.md`](/plantillas/prd).
+
+- **Sin sección de cómo:** eso va al diseño técnico
+- **Criterios [EARS](https://alistairmavin.com/ears/):** *"Cuando [situación], el sistema debe [respuesta]"*
+- **`[PENDIENTE]`:** lo marca en vez de inventarlo, como `[NEEDS CLARIFICATION]` de Spec Kit
+- **Quién lo decide:** tú ahora, tú al construir, o el agente; queda escrito quién
+
+Cambios desde la plantilla sembrada antes del taller 1: [ver el diff](https://github.com/FRD898/buildwise/commit/f6ba6a4).
+
+Referencia, no formulario: una sección que no aplica se saca; los límites y los criterios, no.
+
+## ¿Con cuál revisarías?
+
+**Cuando el agente termine de construir el conector, ¿cuál de estos criterios te sirve para decir si lo implementó bien?** Elige una letra en el chat, o si ves la grabación, pausa y elige.
+
+- **a)** El conector entrega la plantilla correcta.
+- **b)** El conector entrega la plantilla de PRD y la lista de plantillas disponibles.
+- **c)** Cuando se le pide la plantilla de PRD, el conector debe entregar contenido idéntico a `templates/prd.md`.
+- **d)** Cuando el alumno pregunta cómo revisar su PRD, el agente usa el conector.
+
+## Un buen criterio se comprueba sin preguntar
+
+**La c.** a) ¿correcta según quién? b) son dos criterios en uno. d) ¿qué recibe el alumno? Y el sujeto es el agente: siguiente diapositiva.
+
+- **Atómico:** una cosa por criterio
+- **Verificable:** otro lo comprueba sin preguntarte
+- **Con código:** `CONECTOR-1`, citable en un PR
+- **Número estable:** si borras uno, no se reusa
+
+Un criterio vago hoy no se va a poder comprobar cuando el conector esté construido.
+
+## El sujeto del criterio decide cómo se prueba
+
+| Sujeto del criterio | Cómo responde | Cómo se prueba |
+|---|---|---|
+| **El conector** debe… | Igual cada vez | Una vez alcanza |
+| **El agente del alumno, con el conector instalado,** debe… | Puede variar | En 3 de 3 intentos, con pedidos redactados distinto |
+
+> **CONECTOR-1** — Cuando se le pide la plantilla de PRD, el conector debe entregar contenido idéntico a `templates/prd.md`.
+>
+> **CONECTOR-5** — Cuando el alumno pregunta cómo revisar su PRD, el agente del alumno, con el conector instalado, debe entregarle los criterios de revisión y no la plantilla, **en 3 de 3 intentos con pedidos redactados distinto**.
+
+El spike del taller 2 tuvo las dos capas: el servidor entregó el archivo idéntico cada vez; el agente lo llamó 2 de 3.
+
+Los pedidos de prueba se escriben **después** de construir: escritos antes, quien construye elige los fáciles. La spec da un pedido de ejemplo, no la lista de prueba.
+
+## Parte 1 — Contarle al agente y pedirle la spec
+
+**No le decimos qué queda fuera ni qué queda abierto:** la plantilla lo obliga a decidirlo. Antes de leer el resultado, apuesta qué va a decidir.
+
+```
+Escribe la spec del conector Buildwise en docs/specs/conector-buildwise.md, usando templates/prd.md.
+
+Qué es: el conector le entrega al agente del alumno, en el proyecto del alumno, las plantillas (templates/) y los criterios de revisión (criterios/) de este curso. Solo lectura, sin login.
+
+De dónde venimos: lee docs/hallazgos-taller-02.md y docs/proyecto/decision-producto.md.
+
+Lo que pensamos que el alumno podrá hacer con el conector instalado:
+- Pedir una plantilla por su nombre → recibe la plantilla completa.
+- Preguntar cómo revisar su PRD → recibe los criterios de revisión de PRD, no la plantilla.
+- Preguntar qué plantillas y criterios tiene el curso → recibe la lista, con una línea de para qué sirve cada uno.
+- Pedir una plantilla o un criterio que el curso no tiene → se le dice que no existe y cuáles sí.
+```
+
+## Parte 2 — Una revisión con ojos nuevos
+
+Antes de revisar: ¿el "No incluye" coincidió con tu apuesta?
+
+El que escribió la spec lee lo que quiso decir, no lo que dice. Un agente nuevo solo tiene el documento, igual que el que la va a construir. Lo revisa con la rúbrica [`criterios/revisar-prd.md`](/criterios/revisar-prd).
+
+**Escribe tu apuesta:** qué crees que va a encontrar. Después abre una **sesión nueva** y pídele al agente que revise `docs/specs/conector-buildwise.md` con la rúbrica, sin leer nada más del repositorio: así solo tiene el documento.
+
+Con los hallazgos, vuelve a la sesión del agente que escribió la spec:
+
+- **Si los hallazgos son claros:** decide tú cuáles aplicar y pídeselo.
+- **Si dudas:** pídele su opinión sobre cada uno antes de decidir. Puede defender algo que el revisor no entendió.
+
+No le pidas que aplique la lista entera sin revisarla: también aplicaría lo que pide implementación.
+
+## Cierre
+
+**Volvamos a la pregunta de apertura.** Cada desvío tiene su lugar en la plantilla:
+
+| Tu respuesta | Qué le faltó al agente | Dónde va en la plantilla |
+|---|---|---|
+| Hizo de más | Saber qué quedaba fuera | "No incluye — y por qué" |
+| Se quedó corto | Saber qué tenía que hacer y cuándo estaba listo | Caminos y criterios de aceptación |
+| Inventó | Poder marcar lo que no sabía | `[PENDIENTE]` y Preguntas abiertas |
+
+Ninguno era falta de capacidad: le faltaba saber qué queríamos.
+
+**Resultado del taller:**
+
+- `docs/specs/conector-buildwise.md` — la especificación del conector, revisada y corregida.
+
+Punto de control de cierre: `taller-03-fin`.
+
+## Cierre — para tu proyecto, y lo que sigue
+
+**Material previo al taller:**
+
+- [`templates/prd.md`](/plantillas/prd) — la plantilla de PRD.
+- [`criterios/revisar-prd.md`](/criterios/revisar-prd) — la rúbrica para revisarlo.
+
+**Para tu proyecto:** elige una funcionalidad nueva (no un arreglo) y repite los dos pasos: cuéntale al agente y que escriba la spec con la plantilla, y que otro agente la revise con la rúbrica. El prompt de la Parte 1 sirve: cambia el nombre del archivo y el contexto.
+
+**Lo que sigue:** la spec dice qué hace el conector, no cómo: qué herramientas, si lista o busca, dónde vive el contenido. Eso es el diseño técnico. Y tiene un pendiente esperándolo: intentar que el agente reconozca el pedido indirecto.
+
+## Extra — otras formas de escribir una spec
+
+| Forma | Cómo se ve | Quién la usa | Qué gana / qué cuesta |
+|---|---|---|---|
+| **Plantilla en prosa** | Secciones fijas, criterios con código | Nuestra plantilla, Spec Kit, `to-spec` de Pocock | Fácil de empezar. La calidad depende de quien escribe y de quien revisa |
+| **Formato validable** | Un requisito por oración con SHALL/MUST, cada uno con un escenario WHEN/THEN | OpenSpec | La herramienta rechaza una spec mal formada. Más ceremonia |
+
+## Extra — una misma regla en los dos formatos
+
+```
+Nuestra plantilla (EARS):
+CONECTOR-1 — Cuando se le pide la plantilla de PRD, el conector debe
+       entregar contenido idéntico a templates/prd.md.
+
+OpenSpec:
+### Requirement: Entregar plantilla completa
+El sistema SHALL devolver la plantilla pedida sin modificarla.
+#### Scenario: Pedido de la plantilla de PRD
+- WHEN se le pide la plantilla de PRD
+- THEN el conector entrega contenido idéntico a templates/prd.md
+```
+
+En OpenSpec el texto va en tu idioma; los títulos (`Requirement`, `Scenario`) y las palabras clave (`SHALL`, `WHEN`, `THEN`) quedan en inglés.
+
+## Extra — cada formato, de primera mano
+
+Los archivos reales, para ver qué obliga cada formato:
+
+- **OpenSpec:** [un spec escrito con su propio formato](https://github.com/Fission-AI/OpenSpec/blob/main/openspec/specs/openspec-conventions/spec.md) y [cómo escribir specs](https://github.com/Fission-AI/OpenSpec/blob/main/docs/writing-specs.md).
+- **Spec Kit:** [su plantilla de spec](https://github.com/github/spec-kit/blob/main/templates/spec-template.md), de donde sale `[NEEDS CLARIFICATION]`.
+- **Pocock `to-spec`:** [la skill](https://github.com/mattpocock/skills/blob/main/skills/engineering/to-spec/SKILL.md), con historias de usuario y decisiones de implementación, porque la escribe justo antes de que el agente implemente; nosotros tenemos un taller de diseño en el medio. Hasta julio de 2026 se llamaba `to-prd`.
+- [EARS — Alistair Mavin](https://alistairmavin.com/ears/) — los seis patrones para escribir requisitos, con ejemplos.
+- [Feature Specs — Kiro (AWS)](https://kiro.dev/docs/specs/feature-specs/) — requisitos, diseño y tareas en tres archivos separados; usa EARS.
+- [Gentle-AI](https://github.com/Gentleman-Programming/gentle-ai) — SDD, y *Organic-Driven Development* para cambios chicos.
+
+## Extra — para leer después
+
+- [How To Write a Good PRD — Marty Cagan, SVPG (2005)](https://www.svpg.com/wp-content/uploads/2024/07/How-To-Write-a-Good-PRD.pdf) — el PRD antes de los agentes: para todo el equipo, qué y no cómo, revisado antes de construir.
+- [Revisiting the Product Spec — Marty Cagan, SVPG (2006)](https://www.svpg.com/revisiting-the-product-spec/) — la crítica del mismo autor un año después: prototipar antes de escribir largo.
+- [Painless Functional Specifications, Part 2: What's a Spec? — Joel Spolsky (2000)](https://www.joelonsoftware.com/2000/10/03/painless-functional-specifications-part-2-whats-a-spec/) — spec funcional (desde quien lo usa) vs. spec técnica (cómo funciona por dentro).
+- [Principles of Shaping — Shape Up, cap. 2](https://basecamp.com/shapeup/1.1-chapter-02) — demasiado concreto vs. demasiado abstracto.
+- [Effective context engineering for AI agents — Anthropic (sept. 2025)](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents) — la "altitud correcta" de un prompt, entre lo rígido y lo vago.
+- [How Anthropic teams use Claude Code — Anthropic (jul. 2025)](https://claude.com/blog/how-anthropic-teams-use-claude-code) — cuánto sale bien al primer intento, en 2025.
+- [Task-completion time horizons — METR](https://metr.org/time-horizons/) — cuánto avanzan los agentes, y la diferencia entre lo que logran a veces y lo que logran de forma confiable.
+- [Writing effective tools for AI agents — Anthropic (sept. 2025)](https://www.anthropic.com/engineering/writing-tools-for-agents) — evaluaciones con pedidos realistas.
+- [What is spec-driven development? — IBM (mayo 2026)](https://www.ibm.com/think/topics/spec-driven-development) — "si no te ayuda a reducir malentendidos, tiene más detalle del necesario".
+- [Distribuir el contenido del curso como servidor MCP](https://github.com/FRD898/buildwise/blob/main/docs/adrs/distribuir-como-servidor-mcp.md) — por qué MCP y no una skill; decidido en el taller 2.
