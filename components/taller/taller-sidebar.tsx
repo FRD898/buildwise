@@ -36,6 +36,7 @@ const PROYECTO_LABELS: Record<string, string> = {
   backlog: "Backlog",
   "decision-producto": "Decisión de producto",
   priorizacion: "Priorización",
+  "hallazgos-taller-02": "Hallazgos del spike",
 };
 
 const CRITERIO_LABELS: Record<string, string> = {
