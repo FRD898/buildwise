@@ -29,6 +29,7 @@ const PLANTILLA_LABELS: Record<string, string> = {
   "product-brief": "Product Brief",
   prd: "PRD",
   adr: "ADR",
+  "diseno-tecnico": "Diseño técnico",
 };
 
 const PROYECTO_LABELS: Record<string, string> = {
@@ -42,6 +43,7 @@ const PROYECTO_LABELS: Record<string, string> = {
 const CRITERIO_LABELS: Record<string, string> = {
   "que-probar": "Qué probar primero",
   "revisar-prd": "Revisar un PRD",
+  "revisar-diseno": "Revisar un diseño técnico",
 };
 
 export function TallerSidebar() {
