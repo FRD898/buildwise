@@ -2,7 +2,7 @@
 
 Preguntas para revisar un diseño técnico antes de construir. Se revisa junto a su spec.
 
-Quien revisa no debería ser quien escribió. Por cada problema, cita la sección y di qué falla. Si nada bloquea, apruébalo con condición: "sí, si cambias esto". No escribas tú el diseño ni la implementación.
+Quien revisa no debería ser quien escribió. Por cada problema, cita la sección y di qué falla. Si no hay problemas, apruébalo; si los que hay no bloquean, apruébalo con condición: "sí, si cambias esto". No escribas tú el diseño ni la implementación.
 
 ## 1. ¿Hacía falta un diseño?
 
