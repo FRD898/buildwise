@@ -21,8 +21,8 @@ solo.
 Si no sabes algo, no lo inventes: [PENDIENTE: la pregunta], y llévala a "Preguntas
 abiertas".
 
-Sugerencia, si tu proyecto no tiene otra convención: guárdalo en docs/disenos/ con el
-mismo nombre que su spec (kebab-case-title.md).
+Sugerencia, si tu proyecto no tiene otra convención: guárdalo en docs/system-design/ con
+el mismo nombre que su spec (kebab-case-title.md).
 -->
 
 # [Nombre de la funcionalidad] — Diseño técnico
