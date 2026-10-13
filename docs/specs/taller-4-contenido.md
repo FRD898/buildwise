@@ -25,7 +25,7 @@ Taller 3 dejó la spec del conector revisada y con cinco `[PENDIENTE]` que manda
 - **Aplicación, cuatro partes con el agente:**
   - *Parte 1, diseño:* un prompt copiable que pide `docs/system-design/conector-buildwise.md` con la plantilla, alternativas comparadas para cada decisión grande, qué aplica y qué no del artículo de Anthropic sobre herramientas, un diagrama Mermaid y una respuesta o un `[PENDIENTE]` con dueño para cada pendiente de la spec. No le dice qué elegir. Quien hace la práctica apuesta antes de lanzarlo. Mientras el agente escribe, un segundo prompt copiable genera una explicación interactiva de MCP (herramientas, recursos y prompts), que se contrasta con la página oficial de arquitectura. Al terminar se lee el diseño en tres lugares: el diagrama (dónde entra en lo que ya existe), el contrato de las herramientas y los pendientes de la spec.
   - *Revisión breve:* prompt copiable, en una sesión nueva, con el diseño, la spec y la rúbrica; máximo cinco hallazgos. Solo se corrige lo que bloquea construir.
-  - *Parte 2, construir:* prompt copiable que pide primero una prueba por criterio del conector (CONECTOR-1 a 4, 13 y 14) más un nombre con `../`, y correrlas para verlas fallar; recién después, las herramientas del contrato del diseño, donde el diseño las ubica, con la librería oficial de MCP (SDK) que fija el docente. Cada prueba lleva el código del criterio en su nombre. Las pruebas salen de la spec antes de que exista el código. Termina con todas las pruebas pasando.
+  - *Parte 2, construir:* prompt copiable que pide primero una prueba por criterio del conector (CONECTOR-1 a 4, 13 y 14) más un nombre con `../`, y correrlas para verlas fallar; recién después, las herramientas del contrato del diseño, donde el diseño las ubica. Cada prueba lleva el código del criterio en su nombre. Las pruebas salen de la spec antes de que exista el código. Termina con todas las pruebas pasando.
   - *Parte 3, tres pedidos:* comandos copiables para levantar el sitio y conectarlo al agente, y una sesión abierta desde un directorio fuera del repositorio, con por qué. Tres pedidos: por nombre, por otro nombre y el indirecto del taller 2. Apuesta antes. Se mira si el agente llamó la herramienta y si mostró el contenido sin cambiarlo (CONECTOR-6).
 - **Cierre:** retomar la pregunta. Entregable: el diseño revisado y las herramientas con sus pruebas en verde, en `taller-04-fin`. Tarea para el proyecto propio: ubicar su funcionalidad en la tabla de la primera idea y, si cae en la tercera fila, escribir el diseño y pedir la revisión. Gancho al taller 5.
 - **Extra (para leer después):** el flujo commit → PR → revisión automática → merge, hecho con lo del día; dónde buscar servidores MCP (registro oficial y de GitHub) y por qué instalarlos como una dependencia; tabla design doc largo vs. system design; lecturas.
@@ -33,7 +33,7 @@ Taller 3 dejó la spec del conector revisada y con cinco `[PENDIENTE]` que manda
 **No incluye — y por qué**
 - Publicar el conector — el merge y el deploy pasan entre el taller 4 y el 5, fuera de cámara; el taller 5 lo abre publicado.
 - Escribir o editar la plantilla y la rúbrica en clase — llegan con `taller-04-inicio`.
-- La versión del SDK en el diseño — es implementación; la fija el docente en el prompt de la Parte 2.
+- Elegir el SDK de MCP antes de construir — es implementación: lo elige el agente en la Parte 2 y se revisa en su código, como cualquier otra decisión de implementación.
 - Probar los criterios de la capa del agente (CONECTOR-5 a 11, 19 y 20) — los tres pedidos de la Parte 3 no son la evaluación; los pedidos de prueba se escriben en el taller 10.
 - Que el pedido indirecto funcione — sigue fuera de la v1 del conector; si falla en la Parte 3, es dato.
 - Reabrir MCP vs. skills — ya decidido en el ADR del taller 2.
@@ -45,7 +45,7 @@ Taller 3 dejó la spec del conector revisada y con cinco `[PENDIENTE]` que manda
 
 1. El alumno sigue la sesión en vivo → hace las cuatro partes con su agente y termina con el diseño revisado y el conector respondiendo en local.
 2. El alumno ve la grabación o abre la página después → encuentra en la página los prompts copiables de cada parte, los comandos para conectar el conector y los links a la plantilla y la rúbrica.
-3. El alumno se suma en el taller 4 → parte de `taller-04-inicio`, que ya trae la spec revisada, la plantilla, la rúbrica, las dependencias y el comando de pruebas, sin pruebas del conector: las escribe el agente en la Parte 2.
+3. El alumno se suma en el taller 4 → parte de `taller-04-inicio`, que ya trae la spec revisada, la plantilla, la rúbrica y el comando de pruebas; sin pruebas del conector ni dependencias de MCP: las agrega el agente en la Parte 2.
 4. El alumno quiere aplicarlo a su proyecto → la tarea del Cierre le dice cómo decidir si necesita diseño y qué hacer si lo necesita.
 5. Si el agente escribe un diseño que no sirve para la práctica → el docente sigue con el diseño de respaldo.
 6. Si el diseño decide distinto que el diseño de respaldo → se discute al leerlo; si no se resuelve ahí, la Parte 2 sigue con el diseño de respaldo, para que el rescate encaje.
@@ -61,7 +61,7 @@ Taller 3 dejó la spec del conector revisada y con cinco `[PENDIENTE]` que manda
 **La página**
 - **TALLER4-1** — Cuando el alumno abre la página del taller 4, la página debe mostrar las secciones en el orden del ADR de estructura: Apertura, Pregunta, Concepto, Aplicación, Cierre, Extra.
 - **TALLER4-2** — La página debe tener como máximo dos ideas en Concepto.
-- **TALLER4-3** — Fuera de Extra y las lecturas, la página debe nombrar solo estas fuentes: en Concepto, design doc (Google), system design, Mermaid y MCP; en Aplicación, además, el artículo de Anthropic sobre herramientas, la página oficial de arquitectura de MCP y la guía del SDK que usa la Parte 2.
+- **TALLER4-3** — Fuera de Extra y las lecturas, la página debe nombrar solo estas fuentes: en Concepto, design doc (Google), system design, Mermaid y MCP; en Aplicación, además, el artículo de Anthropic sobre herramientas y la página oficial de arquitectura de MCP.
 - **TALLER4-4** — Cuando el alumno llega a la primera idea, la página debe mostrar la tabla de tres filas que decide si un cambio necesita diseño.
 - **TALLER4-5** — Cuando el alumno llega a la segunda idea, la página debe enlazar `templates/diseno-tecnico.md` y `criterios/revisar-diseno.md` en vez de copiar su contenido.
 - **TALLER4-6** — Cuando el alumno llega a cada parte de Aplicación que usa un prompt, la página debe mostrar el prompt completo, en un bloque que se pueda copiar.
@@ -69,8 +69,6 @@ Taller 3 dejó la spec del conector revisada y con cinco `[PENDIENTE]` que manda
 - **TALLER4-8** — El prompt de la Parte 1 debe pedir el diseño sin código, versiones de librerías ni estructura de carpetas interna.
 - **TALLER4-9** — Cuando el alumno llega a la revisión breve, la página debe decirle que se hace en una sesión nueva.
 - **TALLER4-10** — Cuando el alumno llega a la revisión breve, la página debe decirle que solo se corrige lo que bloquea construir.
-- **TALLER4-11** — Cuando el alumno llega a la Parte 2, la página debe decir qué SDK se usa.
-- **TALLER4-12** — Cuando el alumno llega a la Parte 2, la página debe decir por qué la elección del SDK no está en el diseño.
 - **TALLER4-13** — Cuando el alumno llega a la Parte 3, la página debe mostrar los comandos para levantar el sitio y conectarlo al agente.
 - **TALLER4-14** — Cuando el alumno llega a la Parte 3, la página debe decir por qué la sesión se abre fuera del repositorio.
 - **TALLER4-15** — Cuando el alumno llega a la Parte 3, la página debe decir que los tres pedidos no son la evaluación del conector.
@@ -85,7 +83,7 @@ Taller 3 dejó la spec del conector revisada y con cinco `[PENDIENTE]` que manda
 - **TALLER4-20** — Cuando alguien parte de `taller-04-inicio`, el repositorio debe contener `docs/specs/conector-buildwise.md` revisada, `templates/diseno-tecnico.md` y `criterios/revisar-diseno.md`.
 - **TALLER4-21** — Cuando alguien parte de `taller-04-inicio` y corre `pnpm test`, debe terminar sin errores y sin pruebas del conector.
 - **TALLER4-22** — Cuando alguien parte de `taller-04-inicio`, `AGENTS.md` debe decir cómo correr las pruebas.
-- **TALLER4-23** — Cuando alguien parte de `taller-04-inicio`, `pnpm install` debe bastar para correr las pruebas y conectar el conector, sin agregar dependencias.
+- **TALLER4-23** — Cuando alguien parte de `taller-04-inicio`, `pnpm install` debe bastar para correr `pnpm test`.
 - **TALLER4-24** — En `taller-04-fin`, `docs/system-design/conector-buildwise.md` debe tener un diagrama Mermaid de los componentes.
 - **TALLER4-25** — En `taller-04-fin`, `docs/system-design/conector-buildwise.md` no debe tener código ni versiones de librerías.
 - **TALLER4-26** — En `taller-04-fin`, `docs/system-design/conector-buildwise.md` debe tener, para cada `[PENDIENTE]` de la spec del conector, una respuesta o un `[PENDIENTE]` que diga quién lo decide.
