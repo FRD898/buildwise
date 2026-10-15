@@ -151,11 +151,9 @@ Corre pnpm test hasta que pasen, sin cambiar las pruebas.
 
 ## Parte 3 — Conéctalo a tu agente, fuera del repositorio
 
-Con el servidor corriendo en otra terminal, como dice el diseño, conéctalo desde una carpeta nueva, **fuera del repositorio**:
+Con el servidor corriendo en otra terminal, como dice el diseño, conéctalo desde una carpeta que ya tengas, **fuera del repositorio** (por ejemplo, tu escritorio o una carpeta de pruebas). Ábrela en una terminal nueva:
 
 ```
-mkdir prueba-conector && cd prueba-conector
-
 # usa el puerto que imprime el servidor y la ruta del contrato
 claude mcp add --transport http buildwise http://localhost:<puerto>/<ruta>
 ```
@@ -164,7 +162,7 @@ Abre `claude` ahí y comprueba con `/mcp` que `buildwise` aparece conectado. Si 
 
 **Por qué fuera:** dentro del repo, el agente encuentra los archivos en el disco y no usa el conector.
 
-Al terminar, desde esa carpeta: `claude mcp remove buildwise`. Luego puedes borrarla.
+Al terminar, desde esa carpeta: `claude mcp remove buildwise`.
 
 ## Parte 4 — Tres pedidos, con la predicción antes
 
