@@ -7,7 +7,7 @@ Quien revisa no debería ser quien escribió. Por cada problema, cita la secció
 ## 1. ¿Hacía falta un diseño?
 
 - **¿Crea un componente nuevo, guarda datos, expone algo que otros llaman o es difícil de deshacer?** Si no, bastaba la spec. "Esto no necesitaba diseño" también es una revisión.
-- **¿El largo va con el riesgo?** Si una sección explica lo que quien construye decidiría bien solo, sobra.
+- **¿El largo va con el riesgo?** Si una sección explica algo que el agente resolvería solo sin riesgo, sobra.
 
 ## 2. ¿Dice cada cosa una sola vez, sin meterse en la spec ni en el código?
 

@@ -15,8 +15,8 @@ Cada cosa se dice en una sola sección; las demás la nombran por su nombre, no 
 número.
 
 El detalle va según el riesgo: escribe con cuidado lo caro de cambiar (un contrato, un
-dato que se guarda, algo difícil de deshacer); deja lo que quien construye decide bien
-solo.
+dato que se guarda, algo difícil de deshacer); deja lo que el agente resuelve solo sin
+riesgo.
 
 Si no sabes algo, no lo inventes: [PENDIENTE: la pregunta], y llévala a "Preguntas
 abiertas".
@@ -47,8 +47,9 @@ el mismo nombre que su spec (kebab-case-title.md).
 
 <!-- Incluye los que ya existen y los externos. Un componente es un servicio, un proceso,
 un almacenamiento o un sistema externo; no un archivo ni una función. Si algo que ya existe
-hace algo parecido, di qué pasa con él. El diagrama puede ser ASCII si se va a leer donde
-Mermaid no se dibuja. -->
+hace algo parecido, di qué pasa con él. Nuevo: no existe hoy. Existente: ya está y este
+cambio no lo toca. Modificado: ya está y este cambio lo cambia. El diagrama puede ser ASCII
+si se va a leer donde Mermaid no se dibuja. -->
 
 ```mermaid
 flowchart LR
