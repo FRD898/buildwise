@@ -1,6 +1,6 @@
 import { test, before, after } from "node:test";
 import assert from "node:assert/strict";
-import { readdirSync, readFileSync } from "node:fs";
+import { chmodSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { spawn, type ChildProcess } from "node:child_process";
 import { createServer } from "node:net";
 import { Client } from "@modelcontextprotocol/sdk/client/index.js";
@@ -164,4 +164,20 @@ test("etiqueta aparte: primero el identificador, después el archivo exacto", as
     "criterios/revisar-prd",
     archivo("criterios/revisar-prd"),
   ]);
+});
+
+// Quita el permiso de lectura al segundo archivo; como root el permiso no se aplica, así que se salta.
+test("fallo de lectura: devuelve solo el aviso, sin contenido parcial", { skip: process.getuid?.() === 0 }, async () => {
+  const segundo = "templates/adr.md";
+  const modo = statSync(segundo).mode;
+  chmodSync(segundo, 0o000);
+  try {
+    const r = await obtener("plantilla/prd", "plantilla/adr");
+    assert.ok(r.isError);
+    assert.equal(r.textos.length, 1);
+    assert.match(r.todo, /falló/);
+    assert.ok(!r.todo.includes(archivo("plantilla/prd").slice(0, 200)), "no debe incluir parte del primer archivo");
+  } finally {
+    chmodSync(segundo, modo);
+  }
 });
