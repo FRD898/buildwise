@@ -4,7 +4,9 @@ import { chmodSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { Client } from "@modelcontextprotocol/sdk/client/index.js";
 import { StreamableHTTPClientTransport } from "@modelcontextprotocol/sdk/client/streamableHttp.js";
 
-// Requiere `pnpm dev` levantado (recarga el código al guardar); CONECTOR_URL apunta a otro servidor.
+// Prueba la app local: requiere `pnpm dev` levantado (recarga el código al guardar). CONECTOR_URL solo
+// sirve para cambiar el puerto; no está pensado para un servidor remoto (la prueba de fallo de lectura
+// cambia permisos de archivos locales, que un servidor remoto no ve).
 const URL_CONECTOR = process.env.CONECTOR_URL ?? "http://localhost:3000/mcp";
 
 const publicados = [
