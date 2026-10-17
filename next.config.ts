@@ -6,6 +6,8 @@ verificarCatalogo();
 
 const nextConfig: NextConfig = {
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
+  // El conector lee los .md como texto en tiempo de ejecución.
+  outputFileTracingIncludes: { "/mcp": ["./templates/*.md", "./criterios/*.md"] },
 };
 
 const withMDX = createMDX({
