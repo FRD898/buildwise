@@ -3,6 +3,8 @@ import createMDX from "@next/mdx";
 
 const nextConfig: NextConfig = {
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
+  // el conector lee estos archivos en tiempo de pedido
+  outputFileTracingIncludes: { "/mcp": ["./templates/**/*", "./criterios/**/*"] },
 };
 
 const withMDX = createMDX({
