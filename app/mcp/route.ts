@@ -64,6 +64,7 @@ function crearServidor() {
       }
       const content: ReturnType<typeof texto>[] = [];
       let inexistentes = 0;
+      const publicados: string[] = []; // solo ids del catálogo: los inexistentes son texto libre y no se registran
       try {
         for (const id of ids) {
           const e = buscar(id);
@@ -76,12 +77,13 @@ function crearServidor() {
           }
           // Etiqueta y archivo en bloques separados: el archivo sale sin tocar.
           content.push(texto(id), texto(leer(e)));
+          publicados.push(id);
         }
       } catch (err) {
-        log({ herramienta: "obtener", error: true, causa: String(err) });
+        log({ herramienta: "obtener", ids: publicados, inexistentes, error: true, causa: String(err) });
         return { isError: true, content: [texto(FALLO)] };
       }
-      log({ herramienta: "obtener", pedidos: ids.length, inexistentes, error: inexistentes > 0 });
+      log({ herramienta: "obtener", ids: publicados, inexistentes, error: inexistentes > 0 });
       return { isError: inexistentes > 0, content };
     },
   );
