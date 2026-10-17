@@ -18,9 +18,8 @@ import {
   TALLER_COUNT,
   TALLER_SHORT_LABELS,
 } from "@/lib/talleres";
-import { AVAILABLE_PLANTILLAS } from "@/lib/plantillas";
+import { nombres } from "@/lib/catalogo";
 import { AVAILABLE_PROYECTO } from "@/lib/proyecto";
-import { AVAILABLE_CRITERIOS } from "@/lib/criterios";
 
 const TALLERES = Array.from({ length: TALLER_COUNT }, (_, i) => i + 1);
 const AVAILABLE = new Set(AVAILABLE_TALLERES);
@@ -113,7 +112,7 @@ export function TallerSidebar() {
           <SidebarGroupLabel>Criterios</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {AVAILABLE_CRITERIOS.map((slug) => {
+              {nombres("criterios").map((slug) => {
                 const href = `/criterios/${slug}`;
                 return (
                   <SidebarMenuItem key={slug}>
@@ -131,7 +130,7 @@ export function TallerSidebar() {
           <SidebarGroupLabel>Plantillas</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {AVAILABLE_PLANTILLAS.map((slug) => {
+              {nombres("plantilla").map((slug) => {
                 const href = `/plantillas/${slug}`;
                 return (
                   <SidebarMenuItem key={slug}>
