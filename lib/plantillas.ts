@@ -1,4 +1,5 @@
 import type { ComponentType } from "react";
+import { nombresDe } from "@/lib/indice";
 
 export const PLANTILLAS: Record<string, () => Promise<{ default: ComponentType }>> = {
   "product-brief": () => import("@/templates/product-brief.md"),
@@ -7,4 +8,4 @@ export const PLANTILLAS: Record<string, () => Promise<{ default: ComponentType }
   "diseno-tecnico": () => import("@/templates/diseno-tecnico.md"),
 };
 
-export const AVAILABLE_PLANTILLAS = Object.keys(PLANTILLAS);
+export const AVAILABLE_PLANTILLAS = nombresDe("plantilla");

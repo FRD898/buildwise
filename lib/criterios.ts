@@ -1,4 +1,5 @@
 import type { ComponentType } from "react";
+import { nombresDe } from "@/lib/indice";
 
 export const CRITERIOS: Record<string, () => Promise<{ default: ComponentType }>> = {
   "que-probar": () => import("@/criterios/que-probar.md"),
@@ -6,4 +7,4 @@ export const CRITERIOS: Record<string, () => Promise<{ default: ComponentType }>
   "revisar-diseno": () => import("@/criterios/revisar-diseno.md"),
 };
 
-export const AVAILABLE_CRITERIOS = Object.keys(CRITERIOS);
+export const AVAILABLE_CRITERIOS = nombresDe("criterios");
