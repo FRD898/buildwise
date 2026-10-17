@@ -1,34 +1,11 @@
 import { test, before, after } from "node:test";
 import assert from "node:assert/strict";
 import { chmodSync, readdirSync, readFileSync, statSync } from "node:fs";
-import { spawn, type ChildProcess } from "node:child_process";
-import { createServer } from "node:net";
 import { Client } from "@modelcontextprotocol/sdk/client/index.js";
 import { StreamableHTTPClientTransport } from "@modelcontextprotocol/sdk/client/streamableHttp.js";
 
-// Con CONECTOR_URL se prueba un servidor ya levantado; si no, se levanta el build (pretest) en un puerto libre.
-let URL_CONECTOR = process.env.CONECTOR_URL ?? "";
-let servidor: ChildProcess | undefined;
-
-async function levantar() {
-  const puerto = await new Promise<number>((ok) => {
-    const s = createServer().listen(0, () => {
-      const { port } = s.address() as { port: number };
-      s.close(() => ok(port));
-    });
-  });
-  servidor = spawn("pnpm", ["exec", "next", "start", "-p", String(puerto)], { stdio: "ignore" });
-  URL_CONECTOR = `http://localhost:${puerto}/mcp`;
-  for (let i = 0; i < 100; i++) {
-    try {
-      await fetch(URL_CONECTOR);
-      return;
-    } catch {
-      await new Promise((r) => setTimeout(r, 100));
-    }
-  }
-  throw new Error("next start no respondió; ¿corrió pnpm build?");
-}
+// Requiere `pnpm dev` levantado (recarga el código al guardar); CONECTOR_URL apunta a otro servidor.
+const URL_CONECTOR = process.env.CONECTOR_URL ?? "http://localhost:3000/mcp";
 
 const publicados = [
   ...readdirSync("templates").map((f) => `plantilla/${f.replace(/\.md$/, "")}`),
@@ -41,14 +18,14 @@ const archivo = (id: string) => {
 
 let client: Client;
 before(async () => {
-  if (!URL_CONECTOR) await levantar();
   client = new Client({ name: "agente-de-prueba", version: "0" });
-  await client.connect(new StreamableHTTPClientTransport(new URL(URL_CONECTOR)));
+  try {
+    await client.connect(new StreamableHTTPClientTransport(new URL(URL_CONECTOR)));
+  } catch (err) {
+    throw new Error(`No hay conector en ${URL_CONECTOR}: levanta pnpm dev. (${err})`);
+  }
 });
-after(async () => {
-  await client?.close();
-  servidor?.kill();
-});
+after(() => client?.close());
 
 async function llamar(name: string, args: Record<string, unknown> = {}) {
   const r = await client.callTool({ name, arguments: args });

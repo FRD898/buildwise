@@ -12,4 +12,4 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 Qué es este proyecto, para quién, y qué no hace: [`docs/product-brief.md`](docs/product-brief.md). Léelo antes de proponer cualquier cambio de producto.
 
-Se levanta con `pnpm dev`. Se prueba con `pnpm lint` y `pnpm test`.
+Se levanta con `pnpm dev`. Se prueba con `pnpm lint` y `pnpm test`; `pnpm test` necesita `pnpm dev` levantado.
