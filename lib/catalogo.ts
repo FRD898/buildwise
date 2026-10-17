@@ -16,8 +16,9 @@ export const CATALOGO = [
 export type Elemento = (typeof CATALOGO)[number];
 
 export const carpeta = (tipo: Tipo) => (tipo === "plantilla" ? "templates" : "criterios");
-export const idDe = (e: Elemento) => `${e.tipo}/${e.nombre}`;
-export const archivoDe = (e: Elemento) => `${carpeta(e.tipo)}/${e.nombre}.md`;
+export type Entrada = { tipo: Tipo; nombre: string; descripcion: string };
+export const idDe = (e: Pick<Entrada, "tipo" | "nombre">) => `${e.tipo}/${e.nombre}`;
+export const archivoDe = (e: Pick<Entrada, "tipo" | "nombre">) => `${carpeta(e.tipo)}/${e.nombre}.md`;
 export const nombres = (tipo: Tipo) => CATALOGO.filter((e) => e.tipo === tipo).map((e) => e.nombre);
 // Comparación exacta: sin normalizar mayúsculas, rutas ni alias.
 export const buscar = (id: string) => CATALOGO.find((e) => idDe(e) === id);
