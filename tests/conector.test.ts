@@ -1,11 +1,34 @@
 import { test, before, after } from "node:test";
 import assert from "node:assert/strict";
 import { readdirSync, readFileSync } from "node:fs";
+import { spawn, type ChildProcess } from "node:child_process";
+import { createServer } from "node:net";
 import { Client } from "@modelcontextprotocol/sdk/client/index.js";
 import { StreamableHTTPClientTransport } from "@modelcontextprotocol/sdk/client/streamableHttp.js";
 
-// Dirección del conector; el diseño aún no fija la ruta final.
-const URL_CONECTOR = process.env.CONECTOR_URL ?? "http://localhost:3000/mcp";
+// Con CONECTOR_URL se prueba un servidor ya levantado; si no, se levanta el build (pretest) en un puerto libre.
+let URL_CONECTOR = process.env.CONECTOR_URL ?? "";
+let servidor: ChildProcess | undefined;
+
+async function levantar() {
+  const puerto = await new Promise<number>((ok) => {
+    const s = createServer().listen(0, () => {
+      const { port } = s.address() as { port: number };
+      s.close(() => ok(port));
+    });
+  });
+  servidor = spawn("pnpm", ["exec", "next", "start", "-p", String(puerto)], { stdio: "ignore" });
+  URL_CONECTOR = `http://localhost:${puerto}/mcp`;
+  for (let i = 0; i < 100; i++) {
+    try {
+      await fetch(URL_CONECTOR);
+      return;
+    } catch {
+      await new Promise((r) => setTimeout(r, 100));
+    }
+  }
+  throw new Error("next start no respondió; ¿corrió pnpm build?");
+}
 
 const publicados = [
   ...readdirSync("templates").map((f) => `plantilla/${f.replace(/\.md$/, "")}`),
@@ -18,10 +41,14 @@ const archivo = (id: string) => {
 
 let client: Client;
 before(async () => {
+  if (!URL_CONECTOR) await levantar();
   client = new Client({ name: "agente-de-prueba", version: "0" });
   await client.connect(new StreamableHTTPClientTransport(new URL(URL_CONECTOR)));
 });
-after(() => client?.close());
+after(async () => {
+  await client?.close();
+  servidor?.kill();
+});
 
 async function llamar(name: string, args: Record<string, unknown> = {}) {
   const r = await client.callTool({ name, arguments: args });
@@ -67,8 +94,74 @@ test("CONECTOR-14: lo no publicado incluye la lista de lo que sí existe", async
 });
 
 test('un nombre con "../" recibe "no existe"', async () => {
-  const r = await obtener("plantilla/../package.json");
+  const ids = [
+    "plantilla/../package.json",
+    "criterios/../package.json",
+    "../package.json",
+    "plantilla/prd/../../package.json",
+    "/etc/passwd",
+  ];
+  for (const id of ids) {
+    const r = await obtener(id);
+    assert.ok(r.isError, id);
+    assert.match(r.todo, /no existe/i, id);
+    assert.ok(!r.todo.includes('"name": "buildwise"'), `${id}: no debe filtrar archivos fuera de la lista`);
+  }
+});
+
+test("CONECTOR-12: cada elemento de la lista trae su descripción", async () => {
+  const { todo } = await llamar("buildwise_listar");
+  for (const id of publicados) {
+    const linea = todo.split("\n").find((l) => l.includes(id));
+    assert.ok(linea && linea.split(id)[1].replace(/^\W+/, "").length > 10, id);
+  }
+});
+
+test("CONECTOR-15: criterios de un documento sin criterios no entregan su plantilla", async () => {
+  const r = await obtener("criterios/adr");
   assert.ok(r.isError);
   assert.match(r.todo, /no existe/i);
-  assert.ok(!r.todo.includes('"name": "buildwise"'), "no debe filtrar archivos fuera de la lista");
+  assert.ok(!r.textos.includes(archivo("plantilla/adr")));
+});
+
+test("CONECTOR-17: responde sin login ni credenciales", async () => {
+  const res = await fetch(URL_CONECTOR, {
+    method: "POST",
+    headers: { "content-type": "application/json", accept: "application/json, text/event-stream" },
+    body: JSON.stringify({ jsonrpc: "2.0", id: 1, method: "tools/list" }),
+  });
+  assert.equal(res.status, 200);
+});
+
+test("CONECTOR-18: solo ofrece las dos herramientas, ambas de solo lectura", async () => {
+  const { tools } = await client.listTools();
+  assert.deepEqual(tools.map((t) => t.name).sort(), ["buildwise_listar", "buildwise_obtener"]);
+  for (const t of tools) {
+    assert.equal(t.annotations?.readOnlyHint, true, t.name);
+    assert.equal(t.annotations?.destructiveHint, false, t.name);
+  }
+});
+
+test("pedido mixto: entrega completo lo que existe y avisa de lo que no", async () => {
+  const r = await obtener("plantilla/prd", "plantilla/casos-de-uso");
+  assert.ok(r.isError);
+  assert.ok(r.textos.includes(archivo("plantilla/prd")));
+  assert.match(r.todo, /casos-de-uso.*no existe/i);
+  for (const id of publicados) assert.ok(r.todo.includes(id), id);
+});
+
+test("lista vacía: error que apunta a buildwise_listar", async () => {
+  const r = await obtener();
+  assert.ok(r.isError);
+  assert.match(r.todo, /buildwise_listar/);
+});
+
+test("etiqueta aparte: primero el identificador, después el archivo exacto", async () => {
+  const r = await obtener("plantilla/prd", "criterios/revisar-prd");
+  assert.deepEqual(r.textos, [
+    "plantilla/prd",
+    archivo("plantilla/prd"),
+    "criterios/revisar-prd",
+    archivo("criterios/revisar-prd"),
+  ]);
 });
