@@ -1,5 +1,6 @@
 "use client";
 
+import type { MouseEvent } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -12,6 +13,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  useSidebar,
 } from "@/components/ui/sidebar";
 import {
   AVAILABLE_TALLERES,
@@ -47,15 +49,22 @@ const CRITERIO_LABELS: Record<string, string> = {
 
 export function TallerSidebar() {
   const pathname = usePathname();
+  const { setOpenMobile } = useSidebar();
+
+  // En el móvil el menú es un panel encima del contenido: se cierra al tocar cualquier enlace,
+  // también el de la página actual (ahí la ruta no cambia).
+  function cerrarAlNavegar(e: MouseEvent<HTMLDivElement>) {
+    if ((e.target as HTMLElement).closest("a")) setOpenMobile(false);
+  }
 
   return (
     <Sidebar>
-      <SidebarHeader>
+      <SidebarHeader onClick={cerrarAlNavegar}>
         <Link href="/" className="px-2 py-1 text-xl font-bold">
           BuildWise
         </Link>
       </SidebarHeader>
-      <SidebarContent>
+      <SidebarContent onClick={cerrarAlNavegar}>
         <SidebarGroup>
           <SidebarGroupLabel>Talleres</SidebarGroupLabel>
           <SidebarGroupContent>
