@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Buildwise — Product Builder con IA",
+  title: "BuildWise — Product Builder con IA",
   description:
     "El método detrás de Product Builder con IA: del problema al producto en producción, con agentes de IA.",
 };
