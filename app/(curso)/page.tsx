@@ -7,12 +7,12 @@ export default function Home() {
         <h1 className="text-4xl font-semibold tracking-tight text-foreground">
           Buildwise
         </h1>
-        <p className="text-xl leading-8 text-muted-foreground">
+        <p className="text-xl leading-8 text-foreground">
           El método detrás de{" "}
           <strong className="text-foreground">Product Builder con IA</strong>: del
           problema al producto en producción, con agentes de IA.
         </p>
-        <p className="text-base leading-7 text-muted-foreground">
+        <p className="text-base leading-7 text-foreground">
           Companion app de la ruta de Netzun. Método, criterios y plantillas
           versionadas en markdown público para que apliques el ciclo completo en
           tu propio proyecto.
