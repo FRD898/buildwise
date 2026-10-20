@@ -11,7 +11,20 @@ export function Mermaid({ chart }: { chart: string }) {
 
   useEffect(() => {
     if (!initialized) {
-      mermaid.initialize({ startOnLoad: false });
+      // ponytail: hex copiados de los tokens de :root (Mermaid no lee oklch ni var()); actualizar si cambia la paleta
+      mermaid.initialize({
+        startOnLoad: false,
+        theme: "base",
+        themeVariables: {
+          fontFamily: "var(--font-geist-sans), sans-serif",
+          background: "#fcfdfd",
+          primaryColor: "#e2f3ed",
+          primaryTextColor: "#0d261e",
+          primaryBorderColor: "#0c7c56",
+          lineColor: "#0c7c56",
+          textColor: "#0d261e",
+        },
+      });
       initialized = true;
     }
     let cancelled = false;
