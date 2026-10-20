@@ -199,9 +199,5 @@
 
 /* ponytail: fondo sutil solo en modo presentación; usa el color primario ya definido */
 .modo-presentacion {
-  background: linear-gradient(180deg, color-mix(in oklch, var(--primary) 8%, transparent) 0%, transparent 60%);
-}
-
-.dark .modo-presentacion {
-  background: linear-gradient(180deg, color-mix(in oklch, var(--primary) 10%, transparent) 0%, transparent 60%);
+  background: color-mix(in oklch, var(--primary) 6%, var(--background));
 }

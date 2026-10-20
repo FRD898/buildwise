@@ -62,7 +62,12 @@ export function TallerSections({ children }: { children: ReactNode }) {
 
   return (
     <div>
-      <div className="mb-8 flex flex-wrap items-center justify-between gap-4 border-b pb-4">
+      <div
+        className={cn(
+          "mx-auto mb-8 flex max-w-3xl flex-wrap items-center justify-between gap-4",
+          mode === "presentacion" && "max-w-4xl xl:max-w-6xl",
+        )}
+      >
         <div className="flex gap-2">
           <Button
             variant={mode === "lectura" ? "default" : "outline"}
@@ -110,7 +115,7 @@ export function TallerSections({ children }: { children: ReactNode }) {
         className={cn(
           "mx-auto max-w-3xl space-y-4",
           mode === "presentacion" &&
-            "modo-presentacion flex min-h-[60vh] max-w-4xl flex-col justify-center gap-6 rounded-2xl p-8 text-center text-base xl:max-w-6xl xl:text-lg 2xl:p-12 2xl:text-xl [&_h2]:border-b [&_h2]:border-primary [&_h2]:pb-6 [&_h2]:text-4xl 2xl:[&_h2]:text-5xl [&_h2]:text-primary [&_h3]:text-base [&_table]:text-left [&_ul]:text-left [&_ol]:text-left [&_p]:text-left [&_pre]:text-left [&_pre]:whitespace-pre-wrap",
+            "modo-presentacion flex min-h-[60vh] max-w-4xl flex-col justify-center gap-6 rounded-2xl p-8 text-center text-base xl:max-w-6xl xl:text-lg 2xl:p-12 2xl:text-xl [&_h2]:pb-2 [&_h2]:text-4xl 2xl:[&_h2]:text-5xl [&_h2]:text-primary [&_h3]:text-base [&_table]:text-left [&_ul]:text-left [&_ol]:text-left [&_p]:text-left [&_pre]:text-left [&_pre]:whitespace-pre-wrap",
         )}
       >
         {mode === "lectura" ? (

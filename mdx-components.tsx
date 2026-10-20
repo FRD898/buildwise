@@ -32,9 +32,7 @@ function H2(props: ComponentProps<"h2">) {
 }
 
 function H3(props: ComponentProps<"h3">) {
-  return (
-    <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground" {...props} />
-  );
+  return <h3 className="text-lg font-semibold tracking-tight" {...props} />;
 }
 
 function P(props: ComponentProps<"p">) {
