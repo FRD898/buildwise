@@ -12,7 +12,7 @@
 
 **Qué hacemos hoy:** un diseño técnico corto, una revisión breve, y el conector con sus pruebas. Punto de control de partida: `taller-04-inicio`. Si te sumas hoy:
 
-```
+```bash
 git clone https://github.com/FRD898/buildwise && cd buildwise
 git checkout taller-04-inicio && pnpm install
 ```
@@ -153,7 +153,7 @@ Corre pnpm test hasta que pasen, sin cambiar las pruebas.
 
 Con el servidor corriendo en otra terminal, como dice el diseño, conéctalo desde una carpeta que ya tengas, **fuera del repositorio** (por ejemplo, tu escritorio o una carpeta de pruebas). Ábrela en una terminal nueva:
 
-```
+```bash
 # usa el puerto que imprime el servidor y la ruta del contrato
 claude mcp add --transport http buildwise http://localhost:<puerto>/<ruta>
 ```
