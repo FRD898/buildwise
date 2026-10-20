@@ -24,7 +24,7 @@ function A({ className, ...props }: ComponentProps<"a">) {
 }
 
 function H1(props: ComponentProps<"h1">) {
-  return <h1 className="text-3xl font-bold tracking-tight" {...props} />;
+  return <h1 className="text-2xl font-bold tracking-tight sm:text-3xl" {...props} />;
 }
 
 function H2(props: ComponentProps<"h2">) {

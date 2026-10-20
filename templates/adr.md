@@ -11,10 +11,10 @@ descriptivo, sin prefijo numérico (kebab-case-title.md).
 
 # [Título de la decisión]
 
-**Estado:** Propuesta | Aceptada | Reemplazada
-**Fecha:** [YYYY-MM-DD]
-**Quién decide:** [persona o equipo]
-**ADRs relacionados:** [otros ADRs relacionados, o "Ninguno"]
+- **Estado:** Propuesta | Aceptada | Reemplazada
+- **Fecha:** [YYYY-MM-DD]
+- **Quién decide:** [persona o equipo]
+- **ADRs relacionados:** [otros ADRs relacionados, o "Ninguno"]
 
 ---
 

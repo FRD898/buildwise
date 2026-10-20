@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import path from "node:path";
 import createMDX from "@next/mdx";
 import { verificarCatalogo } from "./lib/verificar-catalogo.ts";
 
@@ -13,7 +14,7 @@ const nextConfig: NextConfig = {
 const withMDX = createMDX({
   extension: /\.(md|mdx)$/,
   options: {
-    remarkPlugins: ["remark-gfm"],
+    remarkPlugins: ["remark-gfm", path.resolve("lib/remark-comentarios.mjs")],
   },
 });
 
