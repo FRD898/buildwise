@@ -5,7 +5,7 @@ export default function Home() {
     <div className="flex flex-1 flex-col items-center justify-center px-6 py-24">
       <div className="flex max-w-2xl flex-col items-center gap-8 text-center">
         <h1 className="text-4xl font-semibold tracking-tight text-foreground">
-          Buildwise
+          BuildWise
         </h1>
         <p className="text-xl leading-8 text-foreground">
           El método detrás de{" "}
