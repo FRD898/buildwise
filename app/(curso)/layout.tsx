@@ -5,7 +5,7 @@ export default function TallerLayout({ children }: LayoutProps<"/">) {
   return (
     <SidebarProvider>
       <TallerSidebar />
-      <SidebarInset>
+      <SidebarInset className="min-w-0">
         <SidebarTrigger className="m-2" />
         {children}
       </SidebarInset>

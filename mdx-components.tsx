@@ -1,5 +1,7 @@
 import type { MDXComponents } from "mdx/types";
 import type { ComponentProps, ReactElement } from "react";
+import { Copiar } from "@/components/taller/copiar";
+import { unirLineas } from "@/lib/unir-lineas";
 import { Mermaid } from "@/components/taller/mermaid";
 import { TallerSections } from "@/components/taller/taller-sections";
 
@@ -11,7 +13,27 @@ function Pre({ children, ...props }: ComponentProps<"pre">) {
     return <Mermaid chart={String(child.props.children).trim()} />;
   }
 
-  return <pre {...props}>{children}</pre>;
+  // Sin etiqueta = prompt para el agente (prosa); `bash` = comando; otra etiqueta = texto alineado.
+  const lang = /language-(\w+)/.exec(className)?.[1];
+  const texto = String(child?.props?.children ?? "").replace(/\n$/, "");
+  const estilo =
+    lang === "bash"
+      ? "overflow-x-auto font-mono text-sm"
+      : lang
+        ? "whitespace-pre-wrap wrap-anywhere font-mono text-sm"
+        : "whitespace-pre-wrap wrap-anywhere font-sans";
+  const contenido = lang ? children : unirLineas(texto);
+
+  return (
+    <div className="rounded-md bg-accent">
+      <div className="flex justify-end px-2 pt-2">
+        <Copiar texto={texto} variant="ghost" />
+      </div>
+      <pre {...props} className={`px-4 pb-4 leading-relaxed [&_code]:[font-family:inherit] ${estilo}`}>
+        {contenido}
+      </pre>
+    </div>
+  );
 }
 
 function A({ className, ...props }: ComponentProps<"a">) {
