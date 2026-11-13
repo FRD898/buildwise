@@ -207,13 +207,13 @@ El mismo flujo, a mano. Es lo que un orquestador automatiza.
 
 ```bash
 git switch main && git pull
-git worktree add ../buildwise-tarea-a -b tarea-a
-cd ../buildwise-tarea-a
+git worktree add ../buildwise-tarea-a -b tarea-a && cd ../buildwise-tarea-a
 pnpm install                  # node_modules no se comparte
 PORT=3001 pnpm dev            # un puerto por worktree
 CONECTOR_URL=http://localhost:3001/mcp pnpm test   # sin esto, prueba el 3000
 claude                        # o el agente que uses
-git diff main...              # revisar antes de integrar
+git diff                      # revisar antes del commit
+git add -A && git commit      # o pídeselo al agente
 git push -u origin tarea-a    # PR, revisión, merge
 cd ../buildwise && git worktree remove ../buildwise-tarea-a
 ```
