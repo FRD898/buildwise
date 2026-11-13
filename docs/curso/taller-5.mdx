@@ -211,14 +211,13 @@ git worktree add ../buildwise-tarea-a -b tarea-a
 cd ../buildwise-tarea-a
 pnpm install                  # node_modules no se comparte
 PORT=3001 pnpm dev            # un puerto por worktree
-CONECTOR_URL=http://localhost:3001/mcp pnpm test   # en otra terminal
+CONECTOR_URL=http://localhost:3001/mcp pnpm test   # sin esto, prueba el 3000
 claude                        # o el agente que uses
 git diff main...              # revisar antes de integrar
 git push -u origin tarea-a    # PR, revisión, merge
 cd ../buildwise && git worktree remove ../buildwise-tarea-a
 ```
 
-- Sin `CONECTOR_URL`, `pnpm test` prueba la app del 3000, no la de este worktree.
 - Una terminal por tarea: una pestaña o una sesión de [tmux](https://github.com/tmux/tmux/wiki), que sigue viva si cierras la ventana.
 - Antes de pedir algo, comprueba la carpeta: `pwd` y `git branch --show-current`.
 - Si tu proyecto usa `.env`, cópialo al worktree nuevo, y nunca lo commitees.
@@ -228,13 +227,13 @@ cd ../buildwise && git worktree remove ../buildwise-tarea-a
 
 | Revisar | Cómo |
 |---|---|
-| Quién lo publica, y desde cuándo | `gh repo view DUEÑO/REPO --json owner,licenseInfo,createdAt,pushedAt`. Pocas semanas y mucha fama pide más cautela |
+| Quién lo publica, y desde cuándo | `gh repo view DUEÑO/REPO --json createdAt,licenseInfo`. Nuevo y muy famoso: más cautela |
 | Qué corre al instalar | `npm view PAQUETE scripts`; instala con `--ignore-scripts` si dudas |
 | Instaladores | Nunca `curl … \| sh` directo: descarga, lee, ejecuta |
 | Skills | Lee el `SKILL.md` **y** sus scripts, incluidos los que enlaza fuera de su carpeta |
 | Plugins | Mira qué hooks y servidores MCP trae: los hooks corren solos en cada sesión |
 | Repos ajenos | Revisa `.mcp.json` y `.claude/settings.json` **antes** de abrirlos con tu agente |
-| Qué lee y a dónde se conecta | `grep -rnE "\.ssh\|\.aws\|\.env\|posthog\|sentry" .`, dentro del código del paquete |
+| Qué lee y a dónde se conecta | `grep -rnE "\.ssh\|\.aws\|\.env\|posthog\|sentry" .` en su código |
 | Telemetría y actualizaciones | Busca cómo se apaga, pruébalo, y fija la versión |
 
 **Si algo salió mal:** rota todo lo que pudo leer: tokens de GitHub y npm, claves SSH, `.env` y las claves de tus agentes.
