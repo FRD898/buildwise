@@ -38,12 +38,20 @@ export function Copiar({
   );
 
   if (etiqueta) {
+    // La ✓ basta para el éxito; el error sí necesita texto visible, en tooltip para no mover el ancho.
     return (
-      <Button size="sm" onClick={copiar} {...props}>
-        <Icono data-icon="inline-start" aria-hidden />
-        {etiqueta}
-        {anuncio}
-      </Button>
+      <Tooltip open={estado === "error"}>
+        <TooltipTrigger
+          render={
+            <Button size="sm" onClick={copiar} {...props}>
+              <Icono data-icon="inline-start" aria-hidden />
+              {etiqueta}
+              {anuncio}
+            </Button>
+          }
+        />
+        <TooltipContent>{mensajes.error}</TooltipContent>
+      </Tooltip>
     );
   }
 
