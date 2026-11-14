@@ -6,7 +6,7 @@
 | **Módulo** | Conector Buildwise |
 | **Depende de** | Las plantillas y los criterios publicados en el curso |
 | **Diseño técnico** | [Conector Buildwise — Diseño técnico](../system-design/conector-buildwise.md) |
-| **ADR relacionado** | [Distribuir el contenido del curso como servidor MCP](../adrs/distribuir-como-servidor-mcp.md) |
+| **ADRs relacionados** | [Distribuir el contenido del curso como servidor MCP](../adrs/distribuir-como-servidor-mcp.md) · [El conector vive dentro del sitio](../adrs/conector-dentro-del-sitio.md) |
 
 ---
 
