@@ -27,7 +27,7 @@ function Pre({ children, ...props }: ComponentProps<"pre">) {
   return (
     <div className="rounded-md bg-accent">
       <div className="flex justify-end px-2 pt-2">
-        <Copiar texto={texto} variant="ghost" />
+        <Copiar texto={texto} />
       </div>
       <pre {...props} className={`px-4 pb-4 leading-relaxed [&_code]:[font-family:inherit] ${estilo}`}>
         {contenido}
