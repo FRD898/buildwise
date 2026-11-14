@@ -2,7 +2,7 @@
 
 | Campo | Valor |
 |-------|-------|
-| **Estado** | Revisado |
+| **Estado** | Listo |
 | **Módulo** | Conector Buildwise |
 | **Depende de** | Las plantillas y los criterios publicados en el curso |
 | **Diseño técnico** | [Conector Buildwise — Diseño técnico](../system-design/conector-buildwise.md) |
