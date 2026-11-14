@@ -212,10 +212,8 @@ pnpm install                  # node_modules no se comparte
 PORT=3001 pnpm dev            # un puerto por worktree
 CONECTOR_URL=http://localhost:3001/mcp pnpm test   # sin esto, prueba el 3000
 claude                        # o el agente que uses
-git add -A && git diff --cached   # revisar todo, también lo nuevo
-git commit                    # o pídeselo al agente
-git push -u origin tarea-a    # PR, revisión, merge
-cd ../buildwise && git worktree remove ../buildwise-tarea-a
+# revisa el diff en tu editor o en el PR; los commits y el PR, pídeselos al agente
+cd ../buildwise && git worktree remove ../buildwise-tarea-a   # después del merge
 ```
 
 - Una terminal por tarea: una pestaña o una sesión de [tmux](https://github.com/tmux/tmux/wiki), que sigue viva si cierras la ventana.
