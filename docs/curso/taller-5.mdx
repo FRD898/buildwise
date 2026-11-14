@@ -55,9 +55,9 @@ Un worktree es otra carpeta del mismo repo, con su rama.
 
 ## Una skill nace de algo que repites, y se retira cuando sobra
 
-| Skill del docente | Nació de | Qué pasó |
+| Skill | Nació de | Qué pasó |
 |---|---|---|
-| `atomic-commits` | Hacer commits y PR | Sigue: hoy en vivo |
+| `atomic-commits` | Hacer commits y PR | Sigue en uso: aparece en la Parte 3 |
 | `greptile-resolve` | Responder al revisor automático (Greptile) en el PR | Sigue en uso |
 | `comment-review` | Quitar comentarios de más | Retirada: el modelo ya no los deja |
 
@@ -71,7 +71,7 @@ Un worktree es otra carpeta del mismo repo, con su rama.
 | **Qué le da** | Cómo hacer algo | Poder hacer algo nuevo |
 | **El navegador** | "Antes de entregar, abre la página y compruébala" | Un navegador que el agente controla |
 
-El docente usa Playwright, como MCP. Otras formas de darle un navegador, y su costo: en Extra.
+Un ejemplo: Playwright, como MCP. Otras formas de darle un navegador, y su costo: en Extra.
 
 ## Una skill o un plugin de otro puede ejecutar código en tu máquina
 
@@ -125,7 +125,7 @@ Trabaja FRE-25 de Linear. Muéstrame el diff al terminar. No hagas commit.
 
 ## Parte 2 — Revisar es el trabajo
 
-**Qué observar:** antes de tu revisión, el agente comprueba el botón en su navegador. Tú lo pruebas en el del 3001 y la portada en el del 3000. En el diff, un comentario sobre una línea se le envía al agente como instrucción, y corrige solo eso.
+**Qué observar:** antes de la revisión, el agente comprueba el botón en su navegador. El botón se prueba en el navegador del 3001 y la portada en el del 3000. En el diff, un comentario sobre una línea se le envía al agente como instrucción, y corrige solo eso.
 
 Ejemplo de comentario:
 
@@ -136,7 +136,7 @@ lo que el alumno debe llevarse del taller 4.
 
 ## Parte 3 — Del commit al merge
 
-**Qué observar:** en cada worktree, un PR por tarea. `atomic-commits` propone los commits y espera tu sí. Un commit atómico es un solo cambio con su porqué: se revisa, y si hace falta se revierte, sin arrastrar otros. El merge lo das tú en el navegador integrado; si no alcanza el tiempo, el PR queda abierto. El tag del taller 4 no se hace en vivo: es lo que bajan los alumnos.
+**Qué observar:** en cada worktree, un PR por tarea. `atomic-commits` propone los commits y espera tu sí. Un commit atómico es un solo cambio con su porqué: se revisa, y si hace falta se revierte, sin arrastrar otros. El merge se da desde el navegador integrado. Lo que cuesta deshacer, como un tag que otros descargan, se deja para después y se hace con calma.
 
 ```
 Haz commits atómicos de estos cambios y abre el PR.
@@ -144,7 +144,7 @@ Haz commits atómicos de estos cambios y abre el PR.
 
 ## Parte 4 — Tu entorno también envía datos
 
-**Qué observar:** el docente revisa en pantalla qué sale de su máquina y apaga lo que no hace falta.
+**Qué observar:** qué datos salen de la máquina y cómo se apaga lo que no hace falta.
 
 | Qué | Qué envía | Cómo se apaga |
 |---|---|---|
