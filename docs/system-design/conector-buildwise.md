@@ -2,9 +2,9 @@
 
 | Campo | Valor |
 |-------|-------|
-| **Estado** | Borrador |
+| **Estado** | Construido |
 | **Spec** | [Conector Buildwise](../specs/conector-buildwise.md) |
-| **ADR relacionado** | [Distribuir el contenido del curso como servidor MCP](../adrs/distribuir-como-servidor-mcp.md) |
+| **ADRs relacionados** | [Distribuir el contenido del curso como servidor MCP](../adrs/distribuir-como-servidor-mcp.md) · [El conector vive dentro del sitio](../adrs/conector-dentro-del-sitio.md) |
 
 ---
 

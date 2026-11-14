@@ -2,11 +2,11 @@
 
 | Campo | Valor |
 |-------|-------|
-| **Estado** | Revisado |
+| **Estado** | Listo |
 | **Módulo** | Conector Buildwise |
 | **Depende de** | Las plantillas y los criterios publicados en el curso |
-| **Diseño técnico** | Pendiente |
-| **ADR relacionado** | [Distribuir el contenido del curso como servidor MCP](../adrs/distribuir-como-servidor-mcp.md) |
+| **Diseño técnico** | [Conector Buildwise — Diseño técnico](../system-design/conector-buildwise.md) |
+| **ADRs relacionados** | [Distribuir el contenido del curso como servidor MCP](../adrs/distribuir-como-servidor-mcp.md) · [El conector vive dentro del sitio](../adrs/conector-dentro-del-sitio.md) |
 
 ---
 
@@ -49,7 +49,7 @@ Quien lo usa es el alumno, a través de su agente con el conector instalado.
 2. El alumno pregunta cómo revisar un documento ("¿cómo reviso mi PRD?") → recibe los criterios para revisar ese documento, no la plantilla.
 3. El alumno pide criterios que no son para revisar un documento ("¿qué pruebo antes de construir?") → recibe esos criterios.
 4. El alumno pregunta qué tiene el curso ("¿qué plantillas y criterios hay?") → recibe la lista, cada elemento con la descripción que escribió el curso.
-5. El curso publica una plantilla nueva o corrige una existente → cuando el alumno la pide, recibe la versión nueva, sin hacer nada. [PENDIENTE: cuánto tarda en llegar después de publicarse].
+5. El curso publica una plantilla nueva o corrige una existente → cuando el alumno la pide, recibe la versión nueva, sin hacer nada. Llega cuando termina el despliegue de `main`; el objetivo es 10 minutos ([diseño, §7](../system-design/conector-buildwise.md#cómo-se-sirve-el-contenido-incluido-en-cada-despliegue)).
 
 **Errores**
 
@@ -61,7 +61,7 @@ Quien lo usa es el alumno, a través de su agente con el conector instalado.
 
 9. El alumno pide "la plantilla" sin decir cuál → recibe la lista para elegir; el agente no elige una por su cuenta.
 10. El alumno pide varias cosas a la vez ("la plantilla y los criterios de PRD") → recibe todas, cada una completa.
-11. El alumno usa otro nombre o pide en otro idioma ("el brief", "la spec", "PRD template") → [PENDIENTE: qué sinónimos e idiomas debe reconocer]. Lo que recibe está siempre en español, tal como está en el curso.
+11. El alumno usa otro nombre o pide en otro idioma ("el brief", "la spec", "PRD template") → el agente reconoce a qué se refiere y, si duda, consulta la lista; el conector no traduce nombres ([diseño, §7](../system-design/conector-buildwise.md#sinónimos-e-idiomas-los-resuelve-el-agente-no-el-servidor)). Lo que recibe está siempre en español, tal como está en el curso.
 12. El alumno pide la plantilla ya adaptada a su proyecto → recibe la original; adaptarla queda en manos de su agente (ver "No incluye").
 13. El alumno pide algo sin nombrar el artefacto ("estoy empezando un producto, ¿con qué documento arranco?") → fuera de esta versión (ver "No incluye"). [PENDIENTE: si se puede lograr que el agente use el conector aquí].
 
@@ -93,14 +93,16 @@ Dos capas, según quién responde. "El conector debe…" responde igual cada vez
 - **CONECTOR-15** — Si se le piden criterios para revisar un documento que no tiene criterios, entonces el conector no debe entregar la plantilla de ese documento en su lugar.
 
 **Versión y acceso**
-- **CONECTOR-16** — Cuando se publica un cambio en `templates/` o `criterios/`, el conector debe entregar la versión nueva sin que el alumno reinstale ni actualice nada. [PENDIENTE: en cuánto tiempo]
+- **CONECTOR-16** — Cuando se publica un cambio en `templates/` o `criterios/`, el conector debe entregar la versión nueva sin que el alumno reinstale ni actualice nada, con un objetivo de 10 minutos desde que el cambio llega a `main` ([diseño, §7](../system-design/conector-buildwise.md#cómo-se-sirve-el-contenido-incluido-en-cada-despliegue)).
 - **CONECTOR-17** — El conector debe entregar todo su contenido sin pedir login, cuenta ni credenciales.
 - **CONECTOR-18** — El conector no debe ofrecer ninguna forma de crear, cambiar ni borrar plantillas o criterios.
 
 ## 5. Preguntas abiertas
 
 - [PENDIENTE: ¿se puede lograr que el agente del alumno use el conector cuando el pedido no nombra el artefacto, como en el intento 3 de la prueba del taller 2?] — Lo intenta quien diseñe y construya (diseño técnico, taller 4; construcción, taller 8) y se mide en las evaluaciones del taller 10. Si se logra, entra como criterio de la capa del agente.
-- [PENDIENTE: ¿qué sinónimos ("brief", "spec", "documento de requisitos") e idiomas ("PRD template") debe reconocer el agente?] — Se decide en el diseño técnico, taller 4.
 - [PENDIENTE: cuando el conector no responde, ¿qué ve el alumno y el agente debe decírselo explícitamente?] — Se decide en el diseño técnico, taller 4; se revisa al depurar en el taller 10.
-- [PENDIENTE: después de publicar un cambio, ¿en cuánto tiempo debe entregarlo el conector (camino 5, CONECTOR-16)?] — Se decide en el diseño técnico, taller 4, junto con dónde se aloja.
-- [PENDIENTE: la descripción de una línea la escribe el curso, ¿pero dónde se guarda y cómo se mantiene al agregar un archivo (CONECTOR-12)?] — Se decide en el diseño técnico, taller 4.
+
+**Resueltas en el diseño técnico (taller 4)**
+- ¿Qué sinónimos e idiomas debe reconocer el agente? — Los resuelve el agente, no el servidor: no hay tabla de alias ni búsqueda aproximada. Si ninguna descripción le sirve, consulta la lista; si el pedido no coincide con nada, el error le devuelve la lista. Ver [diseño, §7](../system-design/conector-buildwise.md#sinónimos-e-idiomas-los-resuelve-el-agente-no-el-servidor).
+- ¿En cuánto tiempo llega un cambio publicado (camino 5, CONECTOR-16)? — Cuando termina el despliegue de `main`, sin caché propia en el medio. Objetivo: 10 minutos; se mide con los primeros cambios reales. Ver [diseño, §7](../system-design/conector-buildwise.md#cómo-se-sirve-el-contenido-incluido-en-cada-despliegue).
+- ¿Dónde se guarda la descripción de una línea y cómo se mantiene (CONECTOR-12)? — En el catálogo, junto a la lista de archivos; es obligatoria y el despliegue falla sin ella. Ver [diseño, §7](../system-design/conector-buildwise.md#dónde-viven-las-descripciones-de-una-línea-en-el-catálogo).
